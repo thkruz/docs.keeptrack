@@ -11,7 +11,7 @@ export default defineConfig({
       src: './src/assets/textLogoSm.png'
     },
     social: {
-      github: 'https://github.com/withastro/starlight'
+      github: 'https://github.com/thkruz/keeptrack-docs',
     },
     customCss: [
       './src/styles/global.css',
