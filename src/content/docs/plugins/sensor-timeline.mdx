@@ -1,0 +1,104 @@
+---
+title: Sensor Timeline
+description: A KeepTrack plugin that visualizes satellite visibility from multiple sensors over time.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Sensor Timeline Plugin is a component of the KeepTrack application that provides a visual representation of when a selected satellite is visible from various ground-based sensors over a specified time period.
+
+## Features
+
+- Visualize satellite visibility from multiple sensors on a timeline
+- Customize the calculation length, interval, and pass quality thresholds
+- Enable/disable specific sensors for the timeline
+- Interactive timeline with hover tooltips and click-to-set functionality
+- Export timeline as a PNG image
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Sensor Timeline" icon in the bottom menu for quick access
+2. A side menu with the timeline visualization and settings
+3. A canvas element for rendering the timeline
+4. Settings to adjust calculation parameters and sensor selection
+</Steps>
+
+<Aside>
+  The side menu can be resized to fit different screen sizes, automatically adjusting for widescreen or portrait orientations.
+</Aside>
+
+## Timeline Visualization
+
+The timeline displays the following information:
+
+- Time axis with hour markers
+- Sensor names listed vertically
+- Color-coded pass quality (red for bad, yellow for average, green for good)
+- Hover tooltips with pass start and end times
+
+<Aside type="tip">
+  You can click on a pass in the timeline to set the current time and sensor to that specific pass, allowing for quick navigation to points of interest.
+</Aside>
+
+## Usage
+
+### Viewing the Sensor Timeline
+<Steps>
+1. Select a satellite using the satellite selection tool
+2. Click the "Sensor Timeline" icon in the bottom menu
+3. View the timeline visualization in the side menu
+4. Hover over passes to see detailed timing information
+5. Click on a pass to set the current time and sensor
+</Steps>
+
+### Configuring Timeline Settings
+<Steps>
+1. Open the Sensor Timeline side menu
+2. Click the settings icon (gear)
+3. Adjust the following settings:
+   - Calculation Length (Hours)
+   - Calculation Interval (Seconds)
+   - Bad Pass Length (Seconds)
+   - Average Pass Length (Seconds)
+4. Enable or disable specific sensors using the buttons in the sensor list
+</Steps>
+
+<Aside>
+  Changes to the settings will automatically update the timeline visualization. This may take a moment for satellites with many visible passes.
+</Aside>
+
+## Integration with KeepTrack
+
+The Sensor Timeline Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **SensorManager**: Manages sensor data and selection
+- **TimeManager**: Handles time-related calculations and offsets
+- **SoundManager**: Plays sound effects for user interactions
+
+## Development
+
+When extending or modifying the Sensor Timeline Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses HTML5 Canvas for rendering the timeline
+- Pass calculations are optimized to skip periods when a satellite is out of view
+
+<Aside type="caution">
+  When adding new features or modifying existing ones, be mindful of performance, especially when dealing with long time periods or many sensors. Consider implementing loading indicators for long-running calculations.
+</Aside>
+
+## Troubleshooting
+
+- If the timeline is not displaying, ensure that a satellite is selected
+- Check the browser console for any error messages
+- Verify that the required dependencies (SelectSatManager, SensorManager, etc.) are properly initialized
+- If passes are not showing for a specific sensor, check if the satellite's orbit is within the sensor's range
+
+<Aside>
+  Remember that the accuracy of the timeline depends on the accuracy of the satellite's orbital elements. For the most up-to-date results, ensure you're using recent TLE data.
+</Aside>

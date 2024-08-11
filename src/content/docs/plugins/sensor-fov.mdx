@@ -1,0 +1,78 @@
+---
+title: Sensor Field of View
+description: A KeepTrack plugin that enables visualization of sensor field of view (FOV).
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Sensor FOV Plugin is a component of the KeepTrack application that provides functionality for visualizing the field of view (FOV) of selected sensors in the space visualization.
+
+## Features
+
+- Toggle sensor FOV visualization on and off
+- Integration with sensor selection and management
+- Automatic enabling/disabling based on sensor selection status
+
+## User Interface
+
+The plugin adds the following UI element:
+
+- A "Sensor FOV" icon in the bottom menu for quick access
+
+<Aside>
+  The icon is disabled by default and becomes enabled only when a sensor is selected.
+</Aside>
+
+## Usage
+
+### Toggling Sensor FOV Visualization
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Click the "Sensor FOV" icon in the bottom menu
+3. The visualization will update to show the selected sensor's field of view
+4. Click the icon again to disable the FOV visualization
+</Steps>
+
+## Integration with KeepTrack
+
+The Sensor FOV Plugin integrates with several KeepTrack components:
+
+- **SensorManager**: Responds to sensor selection events
+- **UiManager**: Manages the bottom menu icon state
+- **SensorSurvFence**: Coordinates with other sensor visualization plugins
+
+<Aside>
+  When enabling the Sensor FOV visualization, the plugin automatically disables the Sensor Surveillance Fence visualization to avoid conflicting views.
+</Aside>
+
+## Development
+
+When extending or modifying the Sensor FOV Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for sensor selection and UI interactions
+- The `enableFovView` and `disableFovView` methods control the visualization state
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconCallback`: Function called when the bottom icon is clicked
+- `bottomIconLabel`: Label for the bottom menu icon
+- `bottomIconImg`: Image for the bottom menu icon
+- `isIconDisabledOnLoad`: Sets the initial disabled state of the icon
+
+<Aside type="caution">
+  Ensure that any modifications to the FOV visualization logic also update the corresponding mesh generation in the `SensorFovMesh` class.
+</Aside>
+
+## Troubleshooting
+
+- If the FOV is not visible after enabling, ensure that a sensor is properly selected
+- Check the browser console for any error messages
+- Verify that the required KeepTrack components (SensorManager, etc.) are properly initialized
+
+<Aside>
+  The Sensor FOV visualization may impact performance when displaying multiple sensors simultaneously. Consider optimizing the mesh generation process if extending the plugin for multi-sensor support.
+</Aside>

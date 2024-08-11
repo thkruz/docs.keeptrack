@@ -1,0 +1,87 @@
+---
+title: Satellites
+description: An overview of artificial satellites, their types, orbits, and importance in modern technology and space exploration.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+Now that you've learned how to find satellites using KeepTrack, let's delve deeper into the fascinating world of these orbiting objects. This overview will help you understand the various types of satellites, their orbits, and their crucial roles in our modern world.
+
+## What Are Satellites?
+
+Satellites are man-made objects that orbit celestial bodies, most commonly Earth. While natural satellites like our Moon exist, when we talk about satellites in the context of space technology, we're referring to the artificial ones launched by humans. These remarkable devices have revolutionized our world, enabling global communication, precise navigation, weather forecasting, and groundbreaking scientific research.
+
+<Aside>
+**Historical Note:** The space age began with the launch of Sputnik 1 by the Soviet Union on October 4, 1957. This beeping metal sphere, about the size of a beach ball, captured the world's imagination and kicked off the space race. The United States followed shortly after with Explorer 1, launched on January 31, 1958.
+</Aside>
+
+## Types of Satellites
+
+Satellites come in various shapes and sizes, each designed for specific purposes. Let's explore some of the main categories:
+
+### Communication Satellites
+
+These are the workhorses of global telecommunications. Positioned high above Earth, usually in geostationary orbit, they relay radio, television, and internet signals across vast distances. When you make an international phone call or watch a live event from across the globe, chances are a communication satellite is involved.
+
+### Navigation Satellites
+
+You've probably used these without even realizing it. Navigation satellite systems like GPS (United States), GLONASS (Russia), Galileo (European Union), and BeiDou (China) provide precise positioning and timing information. These constellations of satellites enable everything from smartphone maps to precision agriculture and aviation navigation.
+
+### Earth Observation Satellites
+
+These eyes in the sky continuously monitor our planet, providing invaluable data for weather forecasting, climate research, and disaster management. They can track everything from urban growth to deforestation, ocean currents, and even the movement of glaciers.
+
+<Aside type="tip">
+In KeepTrack, you can often identify Earth observation satellites by their [sun-synchronous orbits](https://en.wikipedia.org/wiki/Sun-synchronous_orbit), which are about 98 degrees [inclination](/basic-tut/orbital-mechanics#orbital-elements) and allow them to pass over the same point on Earth at the same local solar time each day.
+</Aside>
+
+### Scientific Satellites
+
+From peering into the depths of the cosmos to studying our own planet, scientific satellites are at the forefront of space exploration and research. Telescopes like Hubble and James Webb unlock the secrets of distant galaxies, while others study phenomena like solar wind or Earth's magnetosphere.
+
+## Satellite Orbits
+
+The orbit of a satellite determines its capabilities and lifespan. Let's explore the main types of orbits you'll encounter in KeepTrack:
+
+### Low Earth Orbit (LEO)
+
+Ranging from about 160 to 2,000 kilometers above Earth's surface, LEO is home to most Earth observation satellites, many communication satellite constellations, and the International Space Station. Satellites in LEO complete an orbit every 90 minutes to 2 hours, making them appear to move quickly across the sky. If you have ever heard of [Starlink](https://en.wikipedia.org/wiki/Starlink), these are LEO satellites.
+
+### Medium Earth Orbit (MEO)
+
+Occupying the region between 2,000 and 35,786 kilometers, MEO is primarily used by navigation satellite constellations. These orbits provide a good balance between coverage area and signal strength. This is where you'll find GPS satellites, which orbit at an altitude of about 20,200 kilometers.
+
+### Geosynchronous Orbit (GSO) and Geostationary Orbit (GEO)
+
+At an altitude of approximately 35,786 kilometers, satellites in GSO have an orbital period matching Earth's rotation. A special case of GSO is the geostationary orbit, where satellites remain fixed above a point on the equator. These are ideal for communication and weather satellites, as they can continuously monitor the same area.
+
+<Aside title="Fun Fact">
+Geostationary satellites appear to "hover" in the same spot in the sky, making them easy to track with fixed antennas. In KeepTrack, you'll notice these satellites don't move relative to Earth's surface.
+</Aside>
+
+### Highly Elliptical Orbit (HEO)
+
+These egg-shaped orbits have a low perigee (closest approach to Earth) and a high apogee (farthest point from Earth). They're useful for communications in high latitudes and some types of scientific observation. The Molniya orbit is a famous example, used by Russian communication satellites to provide coverage to polar regions.
+
+## The Space Debris
+
+As you explore satellites in KeepTrack, you might notice there are far more objects in orbit than active satellites. This brings us to a critical issue in space exploration: orbital debris.
+
+Space debris, also known as "space junk," consists of defunct satellites, spent rocket stages, and fragments from collisions or explosions. This debris poses a significant risk to active satellites and space missions. Even a small piece of debris, traveling at orbital velocities, can cause severe damage to operational satellites or spacecraft.
+
+<Aside type="tip">
+In KeepTrack satellites (active or inactive) are represented by green dots. Rocket bodies are blue dots, and debris fragments are gray dots. You can enable or disable these categories in the Layers menu to focus on specific types of objects.
+</Aside>
+
+## The Future of Satellites
+
+As you continue to explore KeepTrack, keep an eye out for these emerging trends in satellite technology:
+
+1. **Mega-Constellations**: Companies like SpaceX and OneWeb are launching thousands of small satellites into low Earth orbit to provide global internet coverage. There are so many Starlink satellites that we made a special setting to hide them.
+
+2. **CubeSats**: These standardized small satellites, often no larger than a shoebox, are revolutionizing access to space for universities and small companies.
+
+3. **On-Orbit Servicing**: Future satellites may be able to refuel, repair, or upgrade other satellites in space, extending their operational lifespans.
+
+4. **Quantum Communication**: Satellites are being developed to enable ultra-secure communication using quantum entanglement.

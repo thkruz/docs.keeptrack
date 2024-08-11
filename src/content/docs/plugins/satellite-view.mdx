@@ -1,0 +1,80 @@
+---
+title: Satellite View
+description: A KeepTrack plugin that enables users to switch to a satellite-centric view of the space environment.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Satellite View Plugin is a component of the KeepTrack application that allows users to change the camera perspective to a satellite-centric view, providing a unique perspective of the space environment from the viewpoint of a selected satellite.
+
+## Features
+
+- Switch between normal camera mode and satellite view mode
+- Visual feedback on the bottom menu icon when satellite view is active
+- Integration with satellite selection functionality
+- Prevents activation when no satellite is selected
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Satellite View" icon in the bottom menu for quick access
+</Steps>
+
+<Aside>
+  The bottom menu icon changes its appearance when the satellite view is active, providing a visual cue to the user about the current camera mode.
+</Aside>
+
+## Usage
+
+<Steps>
+1. Select a satellite using the satellite selection functionality
+2. Click the "Satellite View" icon in the bottom menu
+3. The camera will switch to the perspective of the selected satellite
+4. Click the icon again to return to the normal camera mode
+</Steps>
+
+<Aside type="caution">
+  If you attempt to activate the satellite view without a satellite selected, you'll receive a warning toast message.
+</Aside>
+
+## Integration with KeepTrack
+
+The Satellite View Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Checks if a satellite is currently selected
+- **UiManager**: Displays toast notifications and handles UI updates
+- **MainCamera**: Controls the camera type and perspective
+
+## Development
+
+When extending or modifying the Satellite View Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SelectSatManager plugin
+- The camera type is toggled between `FIXED_TO_SAT` and `SATELLITE`
+
+<Aside type="tip">
+  When implementing new features, consider how they might interact with different camera modes to ensure a consistent user experience.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRequireSatelliteSelected`: Set to `true`, requires a satellite to be selected for the plugin to function
+- `isIconDisabledOnLoad`: Set to `true`, the bottom icon is initially disabled
+
+## Troubleshooting
+
+- If the satellite view doesn't activate, ensure that a satellite is selected
+- Check the browser console for any error messages
+- Verify that the required dependency (SelectSatManager) is properly initialized
+
+<Aside>
+  The plugin includes a "shake" effect on the bottom menu icon when trying to activate without a selected satellite, providing immediate visual feedback to the user.
+</Aside>
+
+Remember that the Satellite View offers a unique perspective that can be particularly useful for understanding a satellite's orientation and immediate environment. However, it may take some getting used to for new users, so consider providing additional guidance or tutorials for this feature.

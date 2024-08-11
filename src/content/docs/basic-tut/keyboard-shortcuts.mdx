@@ -1,0 +1,120 @@
+---
+title: Keyboard Shortcuts
+description: A guide to using the keyboard shortcuts.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+The keyboard shortcuts are based on [Kerbal Space Program](https://wiki.kerbalspaceprogram.com/wiki/Key_bindings), a
+popular space simulation game that features complex orbital mechanics and spacecraft controls (I highly recommend the
+original game). These shortcuts are designed to provide quick access to common functions and enhance the user experience
+by reducing reliance on the mouse.
+
+## System and UI Controls
+
+| Shortcut | Function |
+|----------|----------|
+| `Shift + F1` | Toggle help overlay (side menu must be open) |
+| `Shift + F2` | Toggle UI visibility |
+
+## View Controls
+
+| Shortcut | Function |
+|----------|----------|
+| `Numpad +` | Zoom in |
+| `Numpad -` | Zoom out |
+| `` ` `` (backtick) | Reset camera view |
+| `V` | Cycle through camera modes (Earth-centered, free camera, etc) |
+| `F11` | Toggle fullscreen mode |
+
+### Earth Centered Mode
+
+Earth-centered mode keeps the camera focused on Earth while allowing rotation around it.
+
+| Shortcut | Function |
+|----------|----------|
+| `↑` | Pan view Up |
+| `↓` | Pan view Down |
+| `←` | Pan view Left |
+| `→` | Pan view Right |
+| `Shift` | Slow movement speed while dragging |
+| `R` | Auto-rotate around Earth |
+| `Home` | Focus view on Current Sensor |
+
+### Free Camera Mode
+
+Free camera mode allows users to move the camera freely in 3D space using traditional FPS controls.
+
+| Shortcut | Function |
+|----------|----------|
+| `W` | Move forward |
+| `A` | Move left |
+| `S` | Move backward |
+| `D` | Move right |
+| `Q` | Move up |
+| `E` | Move down |
+| `Numpad8` | Rotate up |
+| `Numpad2` | Rotate down |
+| `Numpad4` | Rotate left |
+| `Numpad6` | Rotate right |
+| `Shift` | Slow movement speed |
+
+## Time Controls
+
+| Shortcut | Function |
+|----------|----------|
+| `.` | Increase time warp |
+| `,` | Decrease time warp |
+| `/` | Reset/Pause time warp |
+| `T` | Reset time to Real Time |
+
+## Object Selection and Information
+
+| Shortcut | Function |
+| -------- | -------- |
+| `[` | Toggle between primary and secondary objects |
+| `]` | Toggle between primary and secondary objects |
+| `I` | Toggle info panel for selected object |
+{/* | `{` | Select previous object |
+| `}` | Select next object | */}
+
+## Layer and Visualization Controls
+
+| Shortcut | Function |
+|----------|----------|
+| `L` | Toggle orbit lines |
+| `M` | Toggle 2d map |
+| `N` | Toggle night/day shading on Earth |
+| `P` | Toggle polar plot |
+| `Shift + C` | Toggle current satellite's field of view |
+{/* | `1-9` | Toggle specific layers or object groups |
+| `0` | Show/hide all layers | */}
+
+## Tool Shortcuts
+
+| Shortcut | Function |
+|----------|----------|
+| `Shift + F12` | Toggle debug information (Debug Plugin Required) |
+
+## Search and Navigation
+
+| Shortcut | Function |
+|----------|----------|
+| `Shift + F` | Open search bar |
+{/* | `Home` | Focus view on Earth |
+| `End` | Focus view on selected object | */}
+
+{/* ## Development Considerations
+
+1. **Browser Compatibility**: Ensure these shortcuts don't conflict with common browser shortcuts.
+2. **Text Input Awareness**: Disable shortcuts when users are typing in text input fields.
+3. **Customization**: Allow users to customize shortcuts through a settings interface.
+4. **Contextual Help**: Implement a context-sensitive help system that shows relevant shortcuts based on the current view or tool.
+5. **Accessibility**: Ensure all shortcut functions are also accessible through clickable UI elements.
+6. **Conflict Resolution**: Implement a system to detect and resolve conflicts between custom and default shortcuts.
+
+## Additional Features
+
+1. **Command Palette**: Implement a command palette (activated by `Shift + P`) for quick access to functions via text input.
+2. **Shortcut Combinations**: Use two-key combinations for less common actions to avoid conflicts (e.g., `Shift + O` for advanced options).
+3. **Mode-specific Shortcuts**: Implement context-sensitive shortcuts that change based on the current mode or tool in use. */}

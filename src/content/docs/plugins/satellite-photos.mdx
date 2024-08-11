@@ -1,0 +1,107 @@
+---
+title: Satellite Photos
+description: A KeepTrack plugin that displays live photos from select satellites and enables users to view Earth images from various spacecraft.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Satellite Photos Plugin is a component of the KeepTrack application that provides functionality for viewing live satellite imagery and Earth photos from various spacecraft.
+
+## Features
+
+- Display live photos from select geostationary weather satellites
+- View Earth images captured by the DSCOVR (Deep Space Climate Observatory) satellite
+- Integrate satellite imagery with KeepTrack's satellite tracking capabilities
+- Open images in a lightbox view for detailed examination
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Satellite Photos" icon in the bottom menu for quick access
+2. A side menu with a list of available satellite imagery sources
+3. Dynamic addition of DSCOVR image options based on available data
+</Steps>
+
+## Satellite Imagery Sources
+
+The plugin provides access to images from the following satellites:
+
+- MeteoSat 9
+- MeteoSat 11
+- Himawari 8
+- GOES 16
+- GOES 18
+- DSCOVR (multiple images)
+
+<Aside>
+  The availability of DSCOVR images is determined dynamically by querying the NASA EPIC API. If the API is unavailable, a message will be displayed in the menu.
+</Aside>
+
+## Usage
+
+### Viewing Satellite Imagery
+<Steps>
+1. Click the "Satellite Photos" icon in the bottom menu
+2. Select a satellite or image source from the side menu list
+3. The corresponding satellite will be selected in the main view (if applicable)
+4. The image will open in a lightbox view for detailed examination
+</Steps>
+
+<Aside type="tip">
+  For DSCOVR images, the main view will automatically adjust to center on the coordinates of the selected image.
+</Aside>
+
+### Himawari 8 Specific Functionality
+<Steps>
+1. Select "Himawari 8" from the menu
+2. The plugin will load an image based on the current simulation time
+3. If the simulation time is in the future, it will load the most recent available image
+</Steps>
+
+<Aside>
+  The Himawari 8 functionality includes a 30-minute offset to ensure image availability. This may result in a slight mismatch between the simulation time and the displayed image.
+</Aside>
+
+## Integration with KeepTrack
+
+The Satellite Photos Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Selects the corresponding satellite when an image is viewed
+- **MainCamera**: Adjusts the camera view for optimal image viewing
+- **TimeManager**: Used for time-based image selection (Himawari 8)
+- **UiManager**: Handles UI updates and notifications
+
+## Development
+
+When extending or modifying the Satellite Photos Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses XMLHttpRequest to fetch DSCOVR image data from the NASA EPIC API
+- The `colorbox` function is used to display images in a lightbox view
+
+<Aside>
+  When adding new satellite image sources, ensure to update both the side menu HTML and add corresponding event listeners in the `addJs` method.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconElementName`: ID for the bottom menu icon element
+- `bottomIconLabel`: Label for the bottom menu icon
+- `bottomIconImg`: Image source for the bottom menu icon
+- `sideMenuElementName`: ID for the side menu element
+- `sideMenuElementHtml`: HTML content for the side menu
+
+## Troubleshooting
+
+- If DSCOVR images are not loading, check the browser console for API request errors
+- Ensure that the required KeepTrack components (SelectSatManager, MainCamera, etc.) are properly initialized
+- For issues with specific satellite images, verify the image URLs in the `loadPic` method calls
+
+<Aside type="note">
+  The plugin includes a note about potential discrepancies between the selected satellite in KeepTrack and the displayed image due to changes in the image API. Keep this in mind when troubleshooting unexpected behavior.
+</Aside>

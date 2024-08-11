@@ -1,0 +1,87 @@
+---
+title: Find Satellite
+description: A KeepTrack plugin that allows users to search for satellites based on various criteria including orbital parameters and satellite characteristics.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Find Satellite Plugin is a component of the KeepTrack application that provides advanced search functionality for locating satellites based on a wide range of criteria.
+
+## Features
+
+- Search for satellites using various parameters including:
+  - Orbital elements (inclination, period, right ascension, argument of perigee)
+  - Look angles (azimuth, elevation, range)
+  - Object characteristics (type, country, bus, payload, shape, RCS)
+- Flexible search with adjustable margins for numerical parameters
+- Integration with KeepTrack's search functionality
+- Export of search results
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Find Satellite" icon in the bottom menu for quick access
+2. A side menu with a detailed search form
+3. Dropdown menus for selecting object type, country, satellite bus, payload, and shape
+4. Input fields for specifying orbital parameters and look angles with margins
+</Steps>
+
+## Usage
+
+### Performing a Satellite Search
+<Steps>
+1. Click the "Find Satellite" icon in the bottom menu
+2. Fill in the desired search criteria in the side menu form
+3. Click the "Find Satellite(s)" button
+4. View the results in the main search bar and visualization
+</Steps>
+
+<Aside type="tip">
+  For numerical parameters, you can specify a target value and a margin. For example, to find satellites with inclinations between 51° and 52°, enter 51.5 in the "Inclination" field and 0.5 in the "Margin" field.
+</Aside>
+
+## Integration with KeepTrack
+
+The Find Satellite Plugin integrates with several KeepTrack components:
+
+- **CatalogManager**: Accesses satellite data for searching
+- **UiManager**: Handles UI updates and notifications
+- **TimeManager**: Provides current simulation time for look angle calculations
+- **DotsManager**: Used for checking satellite visibility
+- **SensorManager**: Retrieves current sensor information for look angle calculations
+
+<Aside>
+  The plugin automatically filters out non-satellite objects (like missiles or markers) when performing look angle searches to improve performance and relevance of results.
+</Aside>
+
+## Development
+
+When extending or modifying the Find Satellite Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Search logic is implemented in static methods for easier testing and potential reuse
+- The `searchSats` method is the core function for performing searches
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `searchLimit`: Maximum number of results to return (configurable via settings)
+- Various margin defaults for different search parameters
+
+<Aside type="caution">
+  When adding new search criteria, ensure to update both the UI form and the `searchSats` method to handle the new parameter.
+</Aside>
+
+## Troubleshooting
+
+- If no results are returned, check that the search criteria aren't too restrictive
+- For look angle searches, ensure that a sensor is selected in the Sensor List plugin
+- Check the browser console for any error messages related to the search process
+
+<Aside type="note">
+  The plugin uses the `limitPossibles` method to cap the number of results. If you're not seeing all expected results, check the `searchLimit` setting.
+</Aside>

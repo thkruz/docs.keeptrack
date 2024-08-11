@@ -1,0 +1,183 @@
+---
+title: Missile
+description: A KeepTrack plugin that enables users to simulate and visualize complex missile launch scenarios.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="note">
+  The trajectory math is based on work from MIT to model the Soviet Union's R-7 that launched Sputnik. This is designed for educational purposes only.
+</Aside>
+
+The Missile Plugin is a sophisticated component of the KeepTrack application that enables users to simulate and visualize complex missile launch scenarios. This plugin offers a range of features for both educational purposes and strategic analysis, allowing users to explore various aspects of ballistic missile trajectories and global strike capabilities.
+
+## Features
+
+- Create custom missile attacks with user-defined parameters
+- Utilize pre-defined scenarios for quick simulations
+- Simulate launches from multiple countries and specific locations
+- Visualize detailed missile trajectories on the main view
+- Conduct mass raid simulations for large-scale scenarios
+- Integration with KeepTrack's UI and core functionality
+- Real-time orbit updates for accurate missile path representation
+- Support for submarine-launched ballistic missiles (SLBMs)
+- Multiple warhead simulation capabilities
+
+## User Interface
+
+The Missile Plugin significantly enhances the KeepTrack user interface with the following elements:
+
+<Steps>
+1. A "Missile" icon in the bottom menu for quick access to missile-related functions
+2. A comprehensive side menu with options to create and customize missile attacks
+3. A detailed form for inputting launch and target locations
+4. Dropdown menus for selecting pre-defined launch sites and targets from various countries
+5. Custom input fields for precise latitude and longitude coordinates
+6. A "Launch Missile Attack" button to initiate the simulation
+7. A "Show All Missiles" button to filter and display active missile objects
+8. An error display area for user feedback on invalid inputs or simulation issues
+</Steps>
+
+<Aside type="tip">
+  The side menu is resizable using a click-and-drag functionality, allowing users to adjust the view based on their preferences or screen size.
+</Aside>
+
+## Missile Information and Simulation Details
+
+The Missile Plugin provides extensive information and simulation capabilities:
+
+- Launch location (latitude and longitude)
+- Target location (latitude and longitude)
+- Missile type and country of origin
+- Detailed trajectory information including:
+  - Altitude profile
+  - Ground track (latitude and longitude at each time step)
+  - Time of flight
+- Simulated physical characteristics:
+  - Number of warheads
+  - Missile dimensions (length and diameter)
+  - Fuel properties and burn rates
+- Country-specific missile capabilities and limitations
+
+<Aside type="note">
+  The plugin uses sophisticated mathematical models to simulate missile trajectories, taking into account factors such as Earth's curvature, atmospheric effects, and gravitational forces.
+</Aside>
+
+## Usage
+
+### Creating a Custom Missile Attack
+
+<Steps>
+1. Click the "Missile" icon in the bottom menu to open the side menu
+2. From the "Type of Attack" dropdown, select "Custom Missile"
+3. Choose a launch location from the "Launch Location" dropdown or select a submarine option for SLBM scenarios
+4. If a submarine launch is selected, enter custom latitude and longitude for the launch position
+5. Select a target from the "Target Location" dropdown or choose "Custom Impact" for a user-defined target
+6. If "Custom Impact" is selected, enter the target latitude and longitude
+7. Review all inputs for accuracy
+8. Click "Launch Missile Attack" to initiate the simulation
+</Steps>
+
+<Aside type="tip">
+  For submarine-launched missiles, you can enter custom launch coordinates to simulate different positions in the ocean, adding realism to SLBM scenarios.
+</Aside>
+
+### Running a Pre-defined Attack Scenario
+
+<Steps>
+1. Click the "Missile" icon in the bottom menu
+2. From the "Type of Attack" dropdown, select a pre-defined scenario:
+   - Russia to USA
+   - Russia to USA w/ Subs
+   - China to USA
+   - North Korea to USA
+   - USA to Russia
+   - USA to China
+   - USA to North Korea
+3. Click "Launch Missile Attack" to start the simulation
+</Steps>
+
+<Aside type="caution">
+  Pre-defined scenarios may simulate large numbers of missiles simultaneously, which can be computationally intensive. Ensure your system can handle the load before running these simulations.
+</Aside>
+
+### Viewing Active Missiles
+
+<Steps>
+1. Open the Missile side menu
+2. Click the "Show All Missiles" button at the bottom of the menu
+</Steps>
+
+This action will filter the main view to show only active missile objects, making it easier to focus on the ongoing simulations.
+
+
+## Integration with KeepTrack
+
+The Missile Plugin deeply integrates with several core KeepTrack components:
+
+- **TimeManager**: Retrieves the current simulation time for synchronizing missile launches
+- **UiManager**: Handles all UI updates related to missile functions
+- **CatalogManager**: Integrates missile objects into the main object catalog
+- **OrbitManager**: Updates missile orbits in real-time for accurate trajectory representation
+- **SettingsManager**: Checks for mobile mode settings to adjust the UI accordingly
+
+<Aside type="note">
+  The tight integration with these components allows the Missile Plugin to provide a seamless and realistic simulation experience within the broader KeepTrack environment.
+</Aside>
+
+## Development and Extensibility
+
+When extending or modifying the Missile Plugin, developers should consider the following:
+
+- The plugin adheres to the KeepTrackPlugin architecture for consistency and modularity
+- It registers multiple event handlers for various KeepTrack events, including:
+  - `uiManagerInit`: For setting up the UI elements
+  - `uiManagerFinal`: For finalizing UI setup and adding event listeners
+  - `bottomMenuClick`: For handling the missile icon click in the bottom menu
+  - `hideSideMenus`: For properly hiding the missile menu when required
+  - `updateLoop`: For continuous updates of missile orbits
+  - `onHelpMenuClick`: For displaying missile-specific help information
+- The core missile calculations and data management are handled by the separate `missileManager` module
+- Developers can extend the plugin by:
+  - Adding new missile types or countries
+  - Implementing more sophisticated trajectory calculations
+  - Creating additional pre-defined scenarios
+  - Enhancing the UI for more detailed missile information display
+
+## Performance Considerations
+
+The Missile Plugin can be computationally intensive, especially when simulating multiple missiles or mass raid scenarios:
+
+- Each missile's trajectory is recalculated every frame for accuracy
+- Large numbers of simultaneous missiles can impact overall application performance
+- Users should be cautious when creating many missiles on less powerful devices
+
+<Aside type="caution">
+  When developing new features or modifying existing ones, always consider the performance implications, especially for mobile or low-power devices.
+</Aside>
+
+## Code Configuration and Customization
+
+The plugin offers several areas for configuration and customization:
+
+- `isMobileModeEnabled`: A flag to adjust UI behavior for mobile devices
+- Missile characteristics (e.g., dimensions, fuel properties) can be adjusted in the code for different simulation requirements
+- Pre-defined launch sites and targets are stored in separate data structures (e.g., `UsaICBM`, `RussianICBM`) which can be extended or modified
+- The `calculateAngle_` function can be adjusted to modify the missile's flight characteristics
+
+<Aside type="tip">
+  When adding new missile types or scenarios, remember to update both the UI dropdowns in the HTML and the corresponding logic in the `missileSubmit` function to ensure consistency.
+</Aside>
+
+## Troubleshooting and Best Practices
+
+To ensure optimal use of the Missile Plugin, consider the following:
+
+- Regularly check the browser console for error messages related to missile simulations
+- Ensure all required KeepTrack components (TimeManager, UiManager, etc.) are properly initialized before using missile features
+- For performance issues:
+  - Reduce the number of simultaneous missile launches
+  - Simplify trajectories by adjusting calculation parameters
+  - Consider using pre-calculated trajectories for complex scenarios
+- Regularly test the plugin with various scenarios to ensure accuracy and performance across different use cases

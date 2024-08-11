@@ -1,0 +1,97 @@
+---
+title: Countries Menu
+description: A KeepTrack plugin that allows users to filter satellites by country of origin.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Countries Menu plugin is a component of the KeepTrack application that provides functionality for filtering satellites based on their country of origin.
+
+## Features
+
+- Filter satellites by selecting a country from a predefined list
+- Accessible via bottom menu icon
+- Integration with search functionality
+- Support for over 40 countries
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Countries" icon in the bottom menu for quick access
+2. A side menu with a list of available countries
+3. Clickable country options within the side menu
+</Steps>
+
+<Aside>
+  The side menu can be resized using click-and-drag functionality for easier navigation through the country list.
+</Aside>
+
+## Countries Available
+
+The plugin includes a wide range of countries, from Argentina to Vietnam. Some notable inclusions are:
+
+- China
+- France
+- India
+- Japan
+- Russia
+- United Kingdom
+- United States
+
+<Aside type="tip">
+  The list is organized alphabetically, making it easy to find specific countries quickly.
+</Aside>
+
+## Usage
+
+### Filtering Satellites by Country
+<Steps>
+1. Click the "Countries" icon in the bottom menu
+2. Scroll through the list in the side menu
+3. Click on a country name to filter satellites
+4. The visualization and search results will update to show only satellites from the selected country
+</Steps>
+
+<Aside>
+  When you select a country, KeepTrack creates a group for that country if it doesn't already exist, allowing for quick access in future sessions.
+</Aside>
+
+## Integration with KeepTrack
+
+The Countries Menu Plugin integrates with several KeepTrack components:
+
+- **GroupsManager**: Creates and manages country-based satellite groups
+- **CatalogManager**: Retrieves satellite data for the selected country
+- **UiManager**: Handles UI updates and search functionality
+- **SearchManager**: Updates search results based on the selected country
+- **SelectSatManager**: Deselects any currently selected satellite when a country is chosen
+
+## Development
+
+When extending or modifying the Countries Menu Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the StringExtractor utility to get country codes
+- Country selection is handled by the `countryMenuClick_` static method
+- Group creation and selection logic is in the `groupSelected_` static method
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconImg`: Image for the bottom menu icon (flag.png)
+- `bottomIconLabel`: Label for the bottom menu icon ("Countries")
+- `sideMenuElementName`: ID for the side menu element ("countries-menu")
+
+<Aside>
+  When adding new countries to the list, ensure to update the HTML in the `sideMenuElementHtml` property and provide appropriate country codes in the StringExtractor utility.
+</Aside>
+
+## Troubleshooting
+
+- If a country doesn't appear in the list, check the `sideMenuElementHtml` property in the plugin code
+- Ensure that the required KeepTrack components (GroupsManager, CatalogManager, etc.) are properly initialized
+- For performance issues with countries having a large number of satellites, consider optimizing the group creation and search result population methods

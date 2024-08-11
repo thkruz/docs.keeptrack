@@ -1,0 +1,94 @@
+---
+title: Search Bar
+description: A comprehensive guide to using the search functionality in KeepTrack
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The search bar in KeepTrack is a powerful tool that allows users to quickly find and select specific space objects.
+
+## Opening the Search Bar
+
+The search bar can be toggled open or closed:
+
+- Click the search icon in the top menu
+- Use the keyboard shortcut `Shift + F` to focus on the search bar
+
+## Search Functionality
+
+### Basic Search
+
+1. Type at least 3 characters to initiate a search
+2. Results update in real-time as you type
+3. The search is case-insensitive
+
+### Search Criteria
+
+You can search for space objects using various identifiers:
+
+- Object Name
+- NORAD Catalog Number (SATCAT)
+- International Designator
+- Bus Type
+- Launch Vehicle
+
+<Aside type="tip">
+  For numerical searches (e.g., NORAD IDs), you can separate multiple entries with commas. Do not use spaces.
+</Aside>
+
+## Search Results
+
+### Display
+
+- Results appear in a dropdown below the search bar
+- Each result shows the object's name and identifying number (e.g., NORAD ID)
+- Matching parts of the search are highlighted
+
+### Interaction
+
+- Click on a result to select that object
+- Hover over a result to highlight it in the main view
+- The number of results is limited (default: 350) for performance
+
+<Aside type="tip">
+  You can change the maximum number of search results in the settings plugin.
+</Aside>
+
+### Visual Feedback
+
+- Selected search results are highlighted in the main view
+- The color scheme may change to emphasize the selected group
+
+## Advanced Features
+
+### Group Creation
+
+- Search results automatically create a temporary group
+- This group can be used for further analysis or visualization
+
+### Integration with Other Features
+
+- In Satellite Field of View (FOV) mode, only payloads are searchable
+- Search results can trigger updates in other components (e.g., Satellite FOV calculations)
+
+## Performance Considerations
+
+- Searches are optimized for large datasets
+- Numeric-only searches (e.g., NORAD IDs) use a faster search algorithm
+- Certain object types (e.g., sensors, markers) are excluded from search for efficiency
+
+## Closing the Search
+
+You can close the search bar in one of two ways:
+
+- Right click and select `Clear Screen`
+- Click the search icon again
+
+<Aside type="note">
+  Closing the search will clear the results and reset the view to its default state.
+</Aside>
+
+## Additional Notes
+
+- The search bar is a built-in singleton but will be made into an actual core plugin eventually for better maintainability
+- Searches are added to the Url so they can be shared or bookmarked

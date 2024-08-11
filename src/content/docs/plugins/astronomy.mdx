@@ -1,0 +1,77 @@
+---
+title: Astronomy
+description: A KeepTrack plugin that provides an astronomy view for observing stars and constellations from the perspective of a ground-based sensor.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="danger">
+  This plugin is currently a work in progress and is not recommended for use at this time. The functionality may be incomplete or unstable.
+</Aside>
+
+The Astronomy Plugin is a component of the KeepTrack application that allows users to view stars and constellations from the perspective of a selected ground-based sensor.
+
+## Features
+
+- Switch to an astronomy-focused camera mode
+- Draw constellations when a star manager is loaded
+- Clear orbits and change the legend to astronomy mode
+- Integrate with other KeepTrack components for a seamless experience
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. An "Astronomy View" icon in the bottom menu for quick access
+2. The icon is initially disabled until a sensor is selected
+</Steps>
+
+## Usage
+
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Click the "Astronomy View" icon in the bottom menu
+3. The view will switch to astronomy mode, showing stars and constellations
+4. Click the icon again to return to the default view
+</Steps>
+
+## Integration with KeepTrack
+
+The Astronomy Plugin integrates with several KeepTrack components:
+
+- **CatalogManager**: Checks if the star manager is loaded
+- **OrbitManager**: Clears in-view orbits when entering astronomy mode
+- **DrawManager**: Reinitializes GL context when exiting astronomy mode
+- **UiManager**: Hides side menus when exiting astronomy mode
+- **MainCamera**: Switches between astronomy and default camera modes
+- **StarManager**: Draws or clears constellations
+- **LegendManager**: Changes the legend to astronomy or default mode
+
+## Development
+
+When extending or modifying the Astronomy Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers an event handler for the `setSensor` event to enable/disable the bottom icon
+- The plugin interacts with various KeepTrack managers and components
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconElementName`: The HTML element ID for the bottom icon
+- `bottomIconLabel`: The label text for the bottom icon
+- `bottomIconImg`: The image source for the bottom icon
+- `isIconDisabledOnLoad`: Determines if the icon is initially disabled (default: true)
+
+## Troubleshooting
+
+- If the astronomy view is not displaying correctly, ensure that a sensor is selected
+- Check if the star manager is loaded for constellation display
+- Verify that the required KeepTrack components (CatalogManager, OrbitManager, etc.) are properly initialized
+
+<Aside>
+  Note that this plugin is still under development and may have limited functionality or unexpected behavior.
+</Aside>

@@ -1,0 +1,91 @@
+---
+title: Classification Bar
+description: A guide to using the Classification Bar Plugin in KeepTrack.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+The Classification Bar Plugin adds a customizable classification banner to the top of the KeepTrack application, displaying security classification levels or other important information.
+
+## Features
+
+- Displays a configurable classification string at the top of the application
+- Automatically sets colors based on predefined classification levels
+- Allows custom background and text colors
+- Dynamically shows/hides based on classification string content
+- Adjusts UI layout to accommodate the classification bar
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A horizontal bar at the very top of the application, above all other elements
+</Steps>
+
+## Classification Information Displayed
+
+- Classification string text (e.g., "UNCLASSIFIED", "SECRET", etc.)
+- Background color (preset or custom)
+- Text color (preset or custom)
+
+## Usage
+
+### Setting the Classification String
+<Steps>
+1. Set the `classificationStr` in the `settingsManager` or `settingsManagerOverride.js` before initializing the plugin
+2. The classification bar will automatically appear with the specified text
+</Steps>
+
+<Aside type="tip">
+  Use predefined classification levels for consistent styling across your application.
+</Aside>
+
+### Updating the Classification String
+<Steps>
+1. Call the `updateString` method of the `classificationBarPlugin` instance
+2. Optionally provide custom background and text colors
+3. The classification bar will update immediately with the new information
+</Steps>
+
+<Aside>
+  If you provide an empty string as the classification, the bar will be hidden automatically.
+</Aside>
+
+## Integration with KeepTrack
+
+The Classification Bar Plugin integrates with several KeepTrack components:
+
+- **UiManager**: Initializes the classification bar during UI setup
+- **SettingsManager**: Retrieves the initial classification string
+- **ErrorManager**: Logs issues related to the classification bar
+- **KeepTrackApi**: Registers for UI initialization events and uses HTML templating
+
+<Aside type="caution">
+  Ensure that the `classificationStr` setting is properly set before the UI initialization to avoid unexpected behavior.
+</Aside>
+
+## Development
+
+When extending or modifying the Classification Bar Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the `Classification` utility for validating and styling predefined classification levels
+- The classification bar is inserted as the first child of the container root element
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `classificationStr`: Set this in the `settingsManager` to define the initial classification string
+- `containerHeight`: Defined in the plugin (default: 20px) to set the height of the classification bar
+
+<Aside>
+  You can modify the `containerHeight` constant in the plugin code if you need a taller or shorter classification bar.
+</Aside>
+
+## Troubleshooting
+
+- If the classification bar is not appearing, check if `settingsManager.classificationStr` is set to a non-empty string
+- If colors are not applying correctly, ensure the classification string matches a predefined level or provide custom colors
+- Check the console for any error logs related to the classification bar initialization or updates

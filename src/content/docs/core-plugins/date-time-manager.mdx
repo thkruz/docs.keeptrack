@@ -1,0 +1,89 @@
+---
+title: Date Time Manager
+description: A KeepTrack plugin that manages date and time functionality, including UI elements for displaying and editing the current simulation time.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Date Time Manager Plugin is a component of the KeepTrack application that provides functionality for managing and interacting with the simulation time.
+
+## Features
+
+- Displays current simulation date and time
+- Allows users to edit the simulation time
+- Updates Julian Day (JDay) display
+- Integrates with other KeepTrack components for time-based calculations
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A Julian Day (JDay) display
+2. A clickable date/time display
+3. A date/time input form with a date picker
+</Steps>
+
+## Date Time Information Displayed
+
+- Julian Day (JDay): The number of days since the start of the year
+- Current simulation date and time
+
+<Aside>
+  The Julian Day displayed here is not the same as the astronomical Julian Date. It represents the day of the year (1-365 or 366).
+</Aside>
+
+## Usage
+
+### Viewing Current Date and Time
+- The current simulation date and time are displayed in the top menu
+
+### Changing Simulation Time
+<Steps>
+1. Click on the displayed date/time in the top menu
+2. Use the date picker that appears to select a new date and time
+3. The simulation will update to reflect the new time
+</Steps>
+
+<Aside type="tip">
+  When changing the simulation time, the application will automatically update various calculations and visualizations to reflect the new time.
+</Aside>
+
+## Integration with KeepTrack
+
+The Date Time Manager Plugin integrates with several KeepTrack components:
+
+- **TimeManager**: Handles time calculations and synchronization
+- **ColorSchemeManager**: Updates color schemes based on time changes
+- **UiManager**: Updates UI elements related to time changes
+- **UrlManager**: Updates the URL to reflect time changes
+
+## Development
+
+When extending or modifying the Date Time Manager Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions and time updates
+- The plugin uses jQuery UI's datepicker for the date/time input
+
+<Aside type="caution">
+  When modifying time-related functionality, be careful to maintain synchronization with other time-dependent components of the application.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `divContainerId`: The ID of the main container div (default: 'datetime')
+- `dateTimeInputTbId`: The ID of the date/time input textbox (default: 'datetime-input-tb')
+
+## Troubleshooting
+
+- If the date/time display is not updating, check if the TimeManager is properly initialized
+- For issues with the date picker, ensure that jQuery UI is correctly loaded
+- If time-based calculations seem incorrect after a time change, verify that all relevant components are being notified of the time update
+
+<Aside>
+  Remember that changing the simulation time affects many aspects of the application, including satellite positions, sensor calculations, and various overlays. Always test thoroughly after making changes to time-related functionality.
+</Aside>

@@ -1,0 +1,90 @@
+---
+title: Planetarium
+description: A KeepTrack plugin that provides a planetarium-like view of satellites from the perspective of an observer on Earth.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Planetarium Plugin is a component of the KeepTrack application that allows users to view satellites from the perspective of an observer on Earth, similar to a planetarium experience.
+
+## Features
+
+- Switches the camera to a planetarium-like view
+- Integrates with the sensor selection functionality
+- Adjusts the UI and legend for planetarium mode
+- Clears constellation displays when active
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Planetarium View" icon in the bottom menu for quick access
+2. The icon is initially disabled and becomes enabled when a sensor is selected
+</Steps>
+
+<Aside>
+  The planetarium view is only available when a sensor is selected. Make sure to choose a sensor before attempting to activate the planetarium view.
+</Aside>
+
+## Usage
+
+### Activating Planetarium View
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Click the "Planetarium View" icon in the bottom menu
+3. The view will change to a planetarium-like perspective from the selected sensor's location
+</Steps>
+
+### Deactivating Planetarium View
+<Steps>
+1. Click the "Planetarium View" icon again
+2. The view will return to the default Earth-centered perspective
+</Steps>
+
+<Aside type="caution">
+  Deactivating the planetarium view will reset the camera position and clear any in-view orbits. Make sure you've completed any necessary observations before switching back.
+</Aside>
+
+## Integration with KeepTrack
+
+The Planetarium Plugin integrates with several KeepTrack components:
+
+- **CameraManager**: Switches between default and planetarium camera modes
+- **SensorManager**: Responds to sensor selection events
+- **LegendManager**: Updates the legend display for planetarium mode
+- **StarManager**: Clears constellation displays when entering planetarium mode
+- **OrbitManager**: Clears in-view orbits when exiting planetarium mode
+
+## Development
+
+When extending or modifying the Planetarium Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers an event handler for sensor selection to enable/disable the planetarium icon
+- The planetarium view is activated by changing the camera type to `CameraType.PLANETARIUM`
+- Some UI elements related to sensors are hidden when entering planetarium mode
+
+<Aside>
+  Future development could include implementing a field of view (FOV) display and additional planetarium-specific features.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconElementName`: The HTML element ID for the bottom menu icon
+- `bottomIconLabel`: The label text for the bottom menu icon
+- `bottomIconImg`: The image source for the bottom menu icon
+- `isIconDisabledOnLoad`: Determines if the icon is initially disabled (default: true)
+
+## Troubleshooting
+
+- If the planetarium icon remains disabled, ensure that a sensor has been selected
+- Check the browser console for any error messages related to camera or sensor initialization
+- If the view doesn't change when activating planetarium mode, verify that the CameraManager is properly initialized
+
+<Aside type="tip">
+  Remember that the planetarium view is designed to work in conjunction with the Sensor List Plugin. Always ensure a sensor is selected for the best experience.
+</Aside>

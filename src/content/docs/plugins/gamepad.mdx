@@ -1,0 +1,100 @@
+---
+title: Gamepad
+description: A KeepTrack plugin that enables gamepad control for basic navigation and interaction within the application.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+  The gamepad is not the recommended way to use KeepTrack. It was designed primarily for presentations where limited functionality is needed and a keyboard/mouse setup is not conducive.
+</Aside>
+
+The Gamepad Plugin is a component of the KeepTrack application that provides functionality for using a gamepad controller to navigate and interact with the space visualization.
+
+## Features
+
+- Gamepad connection and disconnection handling
+- Support for various gamepad buttons and analog sticks
+- Camera control (zoom, pan, rotate)
+- Satellite selection and navigation
+- Toggle auto-rotation
+- Vibration feedback
+
+## User Interface
+
+The plugin does not add any visible UI elements but instead enhances the existing interface with gamepad controls:
+
+- Left analog stick: Camera movement
+- Right analog stick: Camera rotation (when not in limited mode)
+- Triggers: Zoom in/out
+- Buttons: Various functions (detailed in the Usage section)
+
+## Usage
+
+### Connecting a Gamepad
+<Steps>
+1. Connect a compatible gamepad to your computer
+2. The application will automatically detect the gamepad connection
+3. A toast notification will appear confirming the connection
+</Steps>
+
+<Aside>
+  The plugin was primarily designed and tested with Xbox controllers. Other gamepads may work but might require modifications to the code for optimal functionality.
+</Aside>
+
+### Basic Controls
+- Left analog stick: Move camera
+- Right analog stick: Rotate camera (if not in limited mode)
+- Left trigger (LT): Zoom out
+- Right trigger (RT): Zoom in
+- A button: Select hovering satellite
+- B button: Deselect satellite and reset zoom
+- X button: Toggle auto-rotate
+- Left bumper (LB): Select previous satellite
+- Right bumper (RB): Select next satellite
+- D-pad: Control auto-rotation direction
+
+<Aside type="tip">
+  The sensitivity and behavior of the controls can be adjusted by modifying the `deadzone` and various speed variables in the plugin code.
+</Aside>
+
+## Integration with KeepTrack
+
+The Gamepad Plugin integrates with several KeepTrack components:
+
+- **CameraManager**: Controls camera movement and rotation
+- **SelectSatManager**: Handles satellite selection
+- **HoverManager**: Identifies the currently hovered satellite
+- **UiManager**: Displays toast notifications for gamepad connection/disconnection
+
+## Development
+
+When extending or modifying the Gamepad Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the Gamepad API to interact with connected gamepads
+- Button mappings are based on a standard Xbox controller layout
+- The plugin supports both normal and limited control modes
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `deadzone`: Analog stick deadzone (default: 0.55)
+- `isLimitedGamepadControls`: Restricts certain functions for presentation mode
+
+<Aside>
+  When adding support for new gamepad models, you may need to adjust the button indices in the `updateButtons_` method to match the new controller's layout.
+</Aside>
+
+## Troubleshooting
+
+- If the gamepad is not detected, ensure it's properly connected and supported by your browser
+- Check the browser console for any error messages related to gamepad functionality
+- Verify that the required KeepTrack components (CameraManager, SelectSatManager, etc.) are properly initialized
+- If certain buttons don't work as expected, check the button mapping in the `updateButtons_` method
+
+<Aside type="note">
+  The Gamepad Plugin is primarily a tool for presentations and limited-interaction scenarios. For full functionality and precise control, using a keyboard and mouse is recommended.
+</Aside>

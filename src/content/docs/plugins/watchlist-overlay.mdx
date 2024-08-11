@@ -1,0 +1,80 @@
+---
+title: Watchlist Overlay
+description: A KeepTrack plugin that provides a visual overlay displaying next pass times for satellites in the watchlist.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Watchlist Overlay Plugin is an extension of the KeepTrack application that enhances the Watchlist functionality by providing a visual overlay of next pass times for satellites in the user's watchlist. This plugin offers quick insights into satellite visibility and integrates closely with the main Watchlist Plugin.
+
+## Features
+
+- Display next pass times for watchlist satellites
+- Color-coded overlay for easy interpretation of pass timing
+- Automatic updates based on simulation time
+- Integration with sensor selection and satellite tracking
+
+## User Interface
+
+The Watchlist Overlay Plugin adds the following UI elements:
+
+- An "Overlay" icon in the bottom menu for quick access
+- A side menu displaying the overlay information
+- Color-coded pass time information for each satellite in the watchlist
+
+<Aside type="tip">
+  The overlay is color-coded for quick visual interpretation:
+  - Yellow: Satellite currently in view
+  - Blue: Pass occurring within 30 minutes after or 10 minutes before the current time
+  - White: Future passes not meeting the above criteria
+</Aside>
+
+## Usage
+
+1. Ensure you have satellites added to your watchlist
+2. Select a sensor using the Sensor List Plugin
+3. Click the "Overlay" icon in the bottom menu to display the pass time information
+
+<Aside type="caution">
+  The overlay requires both a populated watchlist and a selected sensor to function. If either is missing, you'll receive a notification.
+</Aside>
+
+## Functionality
+
+- Automatically calculates next pass times for watchlist satellites
+- Updates the overlay every 10 seconds or when significant changes occur
+- Allows users to click on satellite entries to center the map view on that satellite
+
+<Aside>
+  Pass calculations are performed for a 12-hour window (0.5 days) from the current simulation time.
+</Aside>
+
+## Integration with KeepTrack
+
+The Watchlist Overlay Plugin integrates with several KeepTrack components:
+
+- **Watchlist Plugin**: Retrieves the list of satellites to display
+- **Sensor Manager**: Uses the selected sensor for pass calculations
+- **Time Manager**: Bases calculations on the current simulation time
+- **Orbit Manager**: Manages the display of in-view orbits
+- **Line Manager**: Draws lines between sensors and visible watchlist satellites
+
+## Development Considerations
+
+When extending or modifying the Watchlist Overlay Plugin, keep in mind:
+
+- The plugin depends on the Watchlist Plugin and follows the KeepTrackPlugin architecture
+- Pass calculations are performed using the `SensorMath.nextpassList` method
+- The `updateNextPassOverlay_` method is crucial for refreshing the overlay display
+
+<Aside type="note">
+  Consider optimizing pass calculations for large watchlists to maintain performance.
+</Aside>
+
+## Troubleshooting
+
+- If the overlay is not updating, check if a sensor is selected and the watchlist is populated
+- Ensure that the simulation time is within the expected range for pass calculations
+- Verify that the Watchlist Plugin is properly initialized and functioning
+
+The Watchlist Overlay Plugin enhances the KeepTrack experience by providing users with quick, visual access to upcoming satellite passes, making it easier to plan observations and track objects of interest.

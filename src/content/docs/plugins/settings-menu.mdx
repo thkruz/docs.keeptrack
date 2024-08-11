@@ -1,0 +1,110 @@
+---
+title: Settings Menu
+description: A KeepTrack plugin that provides a user interface for configuring application settings and customizing the visualization.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Settings Menu Plugin is a component of the KeepTrack application that allows users to customize various aspects of the space visualization and application behavior.
+
+## Features
+
+- Configure visibility of different satellite types (LEO, MEO, GEO, etc.)
+- Customize visual elements like orbits, Earth representation, and celestial objects
+- Adjust color schemes for various object types
+- Set performance-related options
+- Enable or disable specific functionalities
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Settings" icon in the bottom menu for quick access
+2. A side menu with various configuration options
+3. Color pickers for customizing object colors
+4. Toggle switches for enabling/disabling features
+5. Input fields for numeric settings
+</Steps>
+
+## Settings Categories
+
+### General Settings
+
+- Satellite visibility options (LEO, MEO, GEO, Starlink, etc.)
+- Object type visibility (Payloads, Rocket Bodies, Debris)
+- Orbit and celestial object rendering options
+- Earth and atmosphere visualization settings
+- User interface preferences
+
+<Aside>
+  Some settings, like showing agencies on the globe, are planned for future implementation and may be disabled in the current version.
+</Aside>
+
+### Color Settings
+
+Users can customize colors for:
+- Payloads
+- Rocket Bodies
+- Debris
+- Objects in view
+- Missiles
+- Special satellites
+
+<Aside type="tip">
+  Color changes are applied in real-time, allowing users to see the effect of their choices immediately.
+</Aside>
+
+### Advanced Settings
+
+- Maximum satellites in search results
+- Satellite field of view
+- Performance-related options
+
+## Usage
+
+To access and modify settings:
+
+<Steps>
+1. Click the "Settings" icon in the bottom menu to open the settings panel
+2. Navigate through the different sections (General, Colors, Advanced)
+3. Adjust settings using toggles, color pickers, and input fields
+4. Click "Update Settings" to apply changes
+5. Use "Reset to Defaults" to restore original settings
+</Steps>
+
+## Integration with KeepTrack
+
+The Settings Menu Plugin integrates with several KeepTrack components:
+
+- **Sound Manager**: Plays audio feedback for user interactions
+- **Color Scheme Manager**: Updates visualization colors based on user preferences
+- **Orbit Manager**: Adjusts orbit rendering based on settings
+- **Scene**: Updates Earth, atmosphere, and celestial object rendering
+- **Persistence Manager**: Saves user preferences for future sessions
+
+<Aside type="caution">
+  Some settings may require a reload of certain components or the entire application to take full effect. The plugin attempts to apply changes in real-time where possible.
+</Aside>
+
+## Development Notes
+
+When extending or modifying the Settings Menu Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses a combination of HTML templates and dynamic JavaScript for the UI
+- Color pickers are implemented using a third-party library (jquery-colorpicker)
+- Settings are persisted using the PersistenceManager
+
+<Aside>
+  Future development should consider moving plugin-specific settings into their respective plugins for better modularity.
+</Aside>
+
+## Troubleshooting
+
+- If settings don't seem to apply, ensure you've clicked the "Update Settings" button
+- For performance issues related to certain settings, try disabling complex visualizations or reducing the number of visible objects
+- If colors reset unexpectedly, check for conflicts with other plugins or color scheme changes
+
+Remember to check the browser console for any error messages if you encounter unexpected behavior while using the Settings Menu.

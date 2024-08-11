@@ -1,0 +1,101 @@
+---
+title: Look Angles
+description: A KeepTrack plugin that calculates and displays look angles between a selected sensor and satellite.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Look Angles Plugin is a component of the KeepTrack application that provides functionality for calculating and displaying look angles between a selected sensor and satellite.
+
+## Features
+
+- Calculate look angles (azimuth, elevation, and range) between a sensor and satellite
+- Display look angles in a table format
+- Option to show only rise and set times
+- Configurable calculation length and interval
+- Export look angle data to CSV
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Look Angles" icon in the bottom menu for quick access
+2. A side menu with a table displaying look angle data
+3. Settings to configure calculation parameters
+4. A download button to export data as CSV
+</Steps>
+
+## Look Angle Information Displayed
+
+- Time in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
+- Elevation (El) in degrees measured from the horizon
+- Azimuth (Az) in degrees measured clockwise from true north
+- Range (Rng) in kilometers
+
+## Usage
+
+### Viewing Look Angles
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Select a satellite
+3. Click the "Look Angles" icon in the bottom menu
+4. View the detailed look angle information in the side menu table
+</Steps>
+
+### Configuring Look Angle Calculations
+<Steps>
+1. Open the Look Angles side menu
+2. Click the settings icon (gear)
+3. Adjust the following settings:
+   - Toggle "Show Only Rise and Set Times"
+   - Set "Calculation Length (Days)"
+   - Set "Interval (Seconds)"
+4. The look angles will automatically update based on your settings
+</Steps>
+
+<Aside>
+   When you propagate a satellite's position further into the future it becomes less accurate.<br/>
+   There is rarely any reason to use a calculation length greater than 7 days.
+</Aside>
+
+### Exporting Look Angle Data
+<Steps>
+1. Open the Look Angles side menu
+2. Click the download icon
+3. The data will be saved as a CSV file
+</Steps>
+
+## Integration with KeepTrack
+
+The Look Angles Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **SensorManager**: Gets the current sensor information
+- **TimeManager**: Handles time-related calculations and offsets
+- **SoundManager**: Plays sound effects for user interactions
+
+## Development
+
+When extending or modifying the Look Angles Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SelectSatManager plugin
+- Look angle calculations are performed using the SensorMath utility
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRiseSetOnly`: Determines if only rise and set times should be shown (default: true)
+- `angleCalculationInterval`: The interval between each line of look angles in seconds (default: 30)
+- `lengthOfLookAngles`: The length of time to calculate look angles for in days (default: 2)
+
+## Troubleshooting
+
+- If look angles are not displaying, ensure that both a sensor and a satellite are selected
+- Check the browser console for any error messages
+- Verify that the required dependencies (SelectSatManager, SensorManager, etc.) are properly initialized

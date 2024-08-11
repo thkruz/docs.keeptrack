@@ -1,0 +1,83 @@
+---
+title: Orbit References
+description: A KeepTrack plugin that generates analyst satellites in orbit for reference and analysis purposes.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Orbit References Plugin is a component of the KeepTrack application that allows users to generate analyst satellites in orbit based on a selected satellite's parameters. This plugin is useful for creating reference points and analyzing orbital characteristics.
+
+## Features
+
+- Generate analyst satellites along the orbit of a selected satellite
+- Create up to 360 reference satellites (limited by orbital period)
+- Automatically add generated satellites to the search string for easy visualization
+- Integrate with the satellite info box for quick access
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Generate Orbit Reference Satellites..." link in the satellite info box top links section
+</Steps>
+
+<Aside>
+  The "Generate Orbit Reference Satellites..." link only appears when a satellite is selected and the satellite info box is open.
+</Aside>
+
+## Usage
+
+<Steps>
+1. Select a satellite using the Select Sat Manager
+2. Open the satellite info box
+3. Click on the "Generate Orbit Reference Satellites..." link in the top links section
+4. The plugin will generate analyst satellites and update the search to include them
+</Steps>
+
+<Aside type="tip">
+  Generated analyst satellites will have IDs starting from `80000`, which is defined by `CatalogManager.ANALYST_START_ID`.
+</Aside>
+
+## Integration with KeepTrack
+
+The Orbit References Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **CatalogManager**: Adds analyst satellites and manages satellite data
+- **UiManager**: Handles UI updates and search functionality
+
+## Development
+
+When extending or modifying the Orbit References Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SatInfoBox and SelectSatManager plugins
+- Analyst satellites are created using the satellite's TLE parameters
+- The plugin uses the [OOTK library](https://github.com/thkruz/ootk) for TLE manipulation and formatting
+
+<Aside type="caution">
+  When adding new analyst satellites, be mindful of performance implications. Generating a large number of satellites may impact application responsiveness.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration:
+
+- `dependencies`: Array of plugin dependencies (SatInfoBox and SelectSatManager)
+- `isReferenceSatsActive`: Boolean flag to track if reference satellites have been generated
+
+<Aside>
+  The `isReferenceSatsActive` flag can be used to prevent duplicate generation of reference satellites or to implement cleanup functionality in future updates.
+</Aside>
+
+## Troubleshooting
+
+- If the "Generate Orbit Reference Satellites..." link doesn't appear, ensure a satellite is selected and the info box is open
+- Check the browser console for any error messages related to TLE generation or satellite addition
+- Verify that the required dependencies (SelectSatManager, CatalogManager) are properly initialized
+
+<Aside type="note">
+  The number of generated reference satellites may vary depending on the orbital period of the selected satellite. Satellites with shorter periods will have fewer reference points to maintain a consistent spacing.
+</Aside>

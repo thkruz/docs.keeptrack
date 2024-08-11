@@ -1,0 +1,44 @@
+---
+title: Mouse Controls
+description: Learn how to navigate the KeepTrack application using the mouse controls.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The mouse controls are essential for navigating the application. Keep Track takes advantage of left, middle, and right mouse buttons for various actions. Additonally the mouse wheel can be used for zooming in and out.
+
+### Left Mouse Button
+
+- **Select**: Click on a satellite or object to select it.
+- **Rotate**: Click and drag to move the view around. This will rotate around the selected object or the center of the earth if no object is selected.
+- **Deselect**: Click on empty space to deselect the current object.
+
+### Middle Mouse Button
+
+- **Pitch**: Click and drag up or down to pitch the view up or down.
+- **Yaw**: Click and drag left or right to yaw the view left or right.
+- **Roll**: Click and drag while holding the `Shift` key to roll the view.
+
+<Aside type="caution" title="Resetting the View">
+  If you get lost or disoriented, you can right-click on the screen and select `Reset Camera` to return to the default view.
+</Aside>
+
+### Right Mouse Button (Context Menu)
+
+Accessed by right-clicking on the main view, providing quick access to view customization options. Here are a few examples:
+
+- **Color Scheme**: Allows users to switch between different color themes for the application interface.
+- **Earth**: Select different Earth maps (e.g., day/night, political boundaries, satellite coverage).
+- **Pause/Start Clock**: Pauses the simulation, freezing all objects. If it is  paused, it will start the simulation again.
+- **Clear Lines**: Removes any drawn lines other than the orbit lines.
+- **Clear Screen**: Resets the view to its default state.
+
+### Scroll Wheel
+
+- **Zoom In/Out**: Scroll up or down to zoom in or out of the view.
+
+<Aside>
+  You have to hover over the main view to adjust the zoom level. If you are hovering over a menu it will not work.
+</Aside>

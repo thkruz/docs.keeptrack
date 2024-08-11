@@ -1,0 +1,109 @@
+---
+title: Debris Screening
+description: A KeepTrack plugin that allows users to screen for potential debris encounters with a selected satellite.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Debris Screening Plugin is a component of the KeepTrack application that provides functionality for identifying potential debris encounters with a selected satellite. This tool can be used to learn about assessing risks to spacecraft and planning debris avoidance maneuvers.
+
+<Aside type="note">
+  This plugin was born from a discussion with NASA's Orbital Debris Program Office and meant to help educate the public on human spaceflight safety. For more detailed information about space debris management, especially related to the International Space Station (ISS), refer to NASA's ["The International Space Station: Operating an Outpost in the New Frontier"](https://www.nasa.gov/wp-content/uploads/2018/04/iss-operating_an_outpost-tagged.pdf).
+</Aside>
+
+## Features
+
+- Screen for potential debris encounters with a selected satellite
+- Customize search parameters (U, V, W dimensions and assessment length)
+- Visualize the search volume around the satellite
+- Generate a list of debris objects within the specified search volume
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Debris Screening" icon in the bottom menu for quick access
+2. A side menu with customizable screening parameters
+3. Buttons to draw and clear the search volume visualization
+4. A form to initiate the debris screening process
+</Steps>
+
+## Debris Screening Information
+
+Users can configure the following parameters for debris screening:
+
+- Satellite SCC# (automatically filled when a satellite is selected)
+- U (Radial) dimension in kilometers
+- V (Velocity Vector) dimension in kilometers
+- W (Out-of-Plane) dimension in kilometers
+- Assessment Length in hours
+
+<Aside type="tip">
+  The U, V, W coordinate system is commonly used in relative spacecraft motion. U is along the radial vector from Earth's center, V is along the velocity vector, and W is perpendicular to both, completing the right-handed coordinate system.
+</Aside>
+
+## Usage
+
+### Performing a Debris Screening
+<Steps>
+1. Select a satellite using the main KeepTrack interface
+2. Click the "Debris Screening" icon in the bottom menu
+3. Adjust the screening parameters as needed
+4. Click "Draw Search Box" to visualize the search volume (optional)
+5. Click "Screen for Debris" to initiate the screening process
+6. View the results in the main KeepTrack interface
+</Steps>
+
+<Aside type="caution">
+  The screening tool can be computationally intensive for large periods of time. If you experience performance issues, consider reducing the length of the search.
+</Aside>
+
+### Visualizing the Search Volume
+<Steps>
+1. Open the Debris Screening menu
+2. Adjust the U, V, and W dimensions as desired
+3. Click "Draw Search Box" to display the search volume around the selected satellite
+4. To remove the visualization, click "Clear Search Box"
+</Steps>
+
+## Integration with KeepTrack
+
+The Debris Screening Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **CatalogManager**: Accesses satellite and debris object data
+- **TimeManager**: Handles time calculations for the screening process
+- **Scene**: Manages the visualization of the search volume
+- **UiManager**: Handles UI updates and search result display
+
+## Development
+
+When extending or modifying the Debris Screening Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the SGP4 propagator for orbital calculations
+- The screening process filters objects based on orbital characteristics before detailed analysis
+- Performance optimizations are implemented to handle large numbers of objects
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `formPrefix_`: Prefix for form element IDs
+- `bottomIconElementName`: Element name for the bottom menu icon
+- `sideMenuElementName`: Element name for the side menu
+
+<Aside>
+  When modifying the plugin, ensure that any changes to the screening algorithm consider both performance and accuracy. The current implementation balances these factors for real-time use in the KeepTrack environment.
+</Aside>
+
+## Troubleshooting
+
+- If the screening process seems slow, try reducing the assessment length or the search volume size
+- Ensure that a satellite is selected before attempting to perform a debris screening
+- Check the browser console for any error messages if the screening process fails to start or complete
+- If the search box visualization doesn't appear, verify that the U, V, and W values are non-zero
+
+By using the Debris Screening Plugin, users can gain insights into potential debris encounters and better understand the challenges of maintaining safe operations in the increasingly crowded orbital environment.

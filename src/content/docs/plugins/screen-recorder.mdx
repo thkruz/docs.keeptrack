@@ -1,0 +1,88 @@
+---
+title: Screen Recorder
+description: A KeepTrack plugin that enables video recording of the application's main view.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Screen Recorder Plugin is a component of the KeepTrack application that provides functionality for recording video of the main application view. It allows users to capture their interactions and visualizations for sharing or later review.
+
+## Features
+
+- Record video of the KeepTrack application
+- Start and stop recording via a bottom menu icon
+- Save recorded video as a .webm file
+- Automatic error handling and user feedback
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Record Video" icon in the bottom menu for quick access to recording functionality
+</Steps>
+
+## Usage
+
+### Starting a Recording
+<Steps>
+1. Click the "Record Video" icon in the bottom menu
+2. If prompted, grant permission for the application to record your screen
+3. The icon will change to indicate that recording has started
+</Steps>
+
+### Stopping a Recording
+<Steps>
+1. Click the "Record Video" icon again to stop the recording
+2. The recorded video will be automatically saved as "keeptrack.webm"
+</Steps>
+
+<Aside>
+  The screen recording functionality requires HTTPS or offline mode to work due to browser security restrictions.
+</Aside>
+
+## Integration with KeepTrack
+
+The Screen Recorder Plugin integrates with several KeepTrack components:
+
+- **UiManager**: Initializes the plugin when the UI is ready
+- **ErrorManager**: Handles and displays error messages
+- **SettingsManager**: Uses video bitrate settings from the application configuration
+
+## Development
+
+When extending or modifying the Screen Recorder Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the `StreamManager` class to handle the actual recording process
+- Error handling is implemented to manage compatibility issues and user permissions
+
+<Aside>
+  When adding new features, ensure to update both the `ScreenRecorder` and `StreamManager` classes to maintain separation of concerns.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `videoBitsPerSecond`: Set in the SettingsManager to control the video quality (default: 30 Mbps)
+
+<Aside type="caution">
+  Higher bitrates will result in larger file sizes. Consider providing user options to balance quality and file size.
+</Aside>
+
+## Troubleshooting
+
+- If the recording icon is disabled, check for compatibility issues with the user's browser
+- Ensure the application is running over HTTPS or in offline mode
+- For permission errors, guide the user to grant screen recording permissions in their browser settings
+
+## Performance Considerations
+
+- Screen recording can be resource-intensive. Consider implementing a maximum recording duration or providing user warnings for long recordings
+- The plugin uses the WebM video format for broad compatibility, but this may not be supported in all browsers
+
+<Aside>
+  The actual recording process is handled by the browser's MediaRecorder API, which helps to minimize performance impact on the main application.
+</Aside>

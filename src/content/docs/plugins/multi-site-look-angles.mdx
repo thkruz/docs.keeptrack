@@ -1,0 +1,101 @@
+---
+title: Multi-Site Look Angles
+description: A KeepTrack plugin that calculates and displays look angles between a selected satellite and multiple sensors.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+The Multi-Site Look Angles Plugin is a component of the KeepTrack application that provides functionality for calculating and displaying look angles between a selected satellite and multiple sensors simultaneously.
+
+## Features
+
+- Calculate look angles (azimuth, elevation, and range) between a satellite and multiple sensors
+- Display look angles in a table format
+- Configurable calculation length and interval
+- Enable/disable specific sensors for calculations
+- Export look angle data to CSV
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Multi-Site Looks" icon in the bottom menu for quick access
+2. A side menu with a table displaying multi-site look angle data
+3. Settings to enable/disable specific sensors
+4. A download button to export data as CSV
+</Steps>
+
+## Look Angle Information Displayed
+
+- Time in [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
+- Elevation (El) in degrees measured from the horizon
+- Azimuth (Az) in degrees measured clockwise from true north
+- Range (Rng) in kilometers
+- Sensor Name
+
+## Usage
+
+### Viewing Multi-Site Look Angles
+<Steps>
+1. Select a satellite
+2. Click the "Multi-Site Looks" icon in the bottom menu
+3. View the detailed look angle information for multiple sensors in the side menu table
+</Steps>
+
+### Configuring Sensor Selection
+<Steps>
+1. Open the Multi-Site Look Angles side menu
+2. Click the settings icon
+3. Use the buttons to enable or disable specific sensors:
+   - Red buttons indicate disabled sensors
+   - Blue buttons indicate enabled sensors
+4. The look angles table will automatically update based on your sensor selection
+</Steps>
+
+### Exporting Look Angle Data
+<Steps>
+  1. Open the Multi-Site Look Angles side menu
+  2. Click the download icon
+  3. The data will be saved as a CSV file named `multisite-[satellite-number]-look-angles.csv`
+</Steps>
+
+## Integration with KeepTrack
+
+The Multi-Site Look Angles Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **SensorManager**: Manages sensor data and selection
+- **TimeManager**: Handles time-related calculations and offsets
+- **SoundManager**: Plays sound effects for user interactions
+- **CatalogManager**: Accesses the static set of objects
+
+## Development
+
+When extending or modifying the Multi-Site Look Angles Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SelectSatManager plugin
+- Look angle calculations are performed using the SatMath utility
+- The plugin filters out sensors that are out of range for the selected satellite
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `lengthOfLookAngles_`: The length of time to calculate look angles for in days (default: 1)
+- `angleCalculationInterval_`: The interval between each line of look angles in seconds (default: 30)
+- `disabledSensors_`: An array of sensors that are initially disabled
+
+## Troubleshooting
+
+- If look angles are not displaying, ensure that a satellite is selected
+- Check the browser console for any error messages
+- Verify that the required dependencies (SelectSatManager, SensorManager, etc.) are properly initialized
+- If a sensor is not appearing in the list, check if it has a valid `objName` property
+
+## Performance Considerations
+
+- The plugin optimizes calculations by skipping sensors that are out of range for the selected satellite
+- It uses a 3/4 orbital period jump to reduce calculation time for satellites with longer periods

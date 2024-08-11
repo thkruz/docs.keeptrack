@@ -1,0 +1,101 @@
+---
+title: Next Launches
+description: A KeepTrack plugin that displays information about upcoming space launches.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Next Launches Plugin is a component of the KeepTrack application that provides functionality for viewing and exporting information about upcoming space launches.
+
+## Features
+
+- Displays a table of upcoming launches with details such as launch window, mission name, location, agency, and country
+- Fetches launch data from The Space Devs API
+- Allows exporting of launch information to CSV format
+- Integrates with KeepTrack's UI and sound systems
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Next Launches" icon in the bottom menu for quick access
+2. A side menu with a table displaying upcoming launch information
+3. An "Export Launch Info" button to save launch data as CSV
+</Steps>
+
+<Aside>
+  The side menu can be dragged to adjust its size, with a minimum width of 450px and a maximum width of 650px.
+</Aside>
+
+## Launch Information Displayed
+
+- Launch Window (start time in UTC)
+- Mission Name
+- Rocket Name
+- Launch Location
+- Agency
+- Country
+
+<Aside type="tip">
+  Clicking on mission names, rocket names, locations, or agencies that have associated URLs will open more detailed information in a colorbox overlay.
+</Aside>
+
+## Usage
+
+### Viewing Upcoming Launches
+<Steps>
+1. Click the "Next Launches" icon in the bottom menu
+2. The side menu will open, displaying a table of upcoming launches
+3. If data hasn't been fetched yet, the plugin will retrieve it from The Space Devs API
+</Steps>
+
+### Exporting Launch Information
+<Steps>
+1. Open the Next Launches side menu
+2. Click the "Export Launch Info" button at the bottom of the menu
+3. The launch data will be saved as a CSV file
+</Steps>
+
+## Integration with KeepTrack
+
+The Next Launches Plugin integrates with several KeepTrack components:
+
+- **UI Manager**: Handles UI updates and event registration
+- **Sound Manager**: Plays a sound effect when exporting data
+- **Error Manager**: Displays warnings if the API is unavailable
+
+<Aside type="caution">
+  The plugin uses different API endpoints based on whether it's running on localhost or a production server. This ensures appropriate usage of The Space Devs API resources.
+</Aside>
+
+## Development
+
+When extending or modifying the Next Launches Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It fetches data from The Space Devs API and processes it into a standardized format
+- The table is dynamically generated based on the fetched launch data
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconImg`: Image for the bottom menu icon (default: calendar2.png)
+- `bottomIconLabel`: Label for the bottom menu icon (default: "Next Launches")
+- `dragOptions`: Configuration for making the side menu draggable
+
+<Aside>
+  The plugin uses a CSS file (next-launches.css) for styling, which is dynamically imported when the plugin is initialized.
+</Aside>
+
+## Troubleshooting
+
+- If the launch table doesn't populate, check the browser console for API-related error messages
+- Ensure that the required KeepTrack components (UI Manager, Sound Manager, etc.) are properly initialized
+- For issues with the colorbox overlays, verify that the colorbox library is correctly loaded and configured
+
+<Aside type="note">
+  The plugin caches the launch data after the first fetch. If you need to refresh the data, you may need to reload the entire application.
+</Aside>

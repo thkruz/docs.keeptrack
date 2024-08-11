@@ -1,0 +1,98 @@
+---
+title: Stereographic Map
+description: A KeepTrack plugin that provides a stereographic map visualization for satellite ground traces and sensor coverage.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Stereo Map Plugin is a component of the KeepTrack application that offers a 2D stereographic map visualization for satellite ground traces and sensor coverage. It enhances the user's understanding of satellite orbits and visibility from ground stations.
+
+## Features
+
+- Display satellite ground traces on a 2D map
+- Visualize sensor coverage and satellite visibility
+- Interactive time selection along the ground trace
+- Keyboard shortcut for quick access
+- Responsive design for various screen sizes
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Stereo Map" icon in the bottom menu for quick access
+2. A side menu containing the stereographic map
+3. Interactive elements on the map (satellite icon, sensor icon, ground trace points)
+</Steps>
+
+<Aside>
+  The map can be resized automatically based on the window size, optimizing for both widescreen and portrait orientations.
+</Aside>
+
+## Usage
+
+### Viewing the Stereographic Map
+<Steps>
+1. Select a satellite using the satellite selection tool
+2. Click the "Stereo Map" icon in the bottom menu or press the 'M' key
+3. The map will display showing the satellite's ground trace and current position
+4. If a sensor is selected, its position and coverage will also be shown
+</Steps>
+
+### Interacting with the Map
+- Click on yellow or red squares along the ground trace to change the simulation time to that point
+- The satellite icon shows the current position of the satellite
+- Yellow portions of the ground trace indicate when the satellite is visible to the selected sensor
+- Red portions indicate when the satellite is not visible
+
+<Aside type="tip">
+  You can use the 'M' keyboard shortcut to quickly toggle the Stereo Map view.
+</Aside>
+
+## Integration with KeepTrack
+
+The Stereo Map Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **SensorManager**: Gets information about the current sensor
+- **TimeManager**: Handles time-related calculations and updates
+- **CatalogManager**: Accesses satellite data for calculations
+- **SoundManager**: Provides audio feedback for user interactions
+
+<Aside>
+  The plugin automatically updates the map when satellite data is crunched, ensuring an up-to-date visualization.
+</Aside>
+
+## Development
+
+When extending or modifying the Stereo Map Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Map drawing is performed on an HTML canvas element
+- The ground trace is calculated using satellite orbital parameters
+- The map includes copyright and classification information
+
+<Aside type="caution">
+  When adding new features, be mindful of performance, especially when calculating and drawing the ground trace for long periods.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRequireSatelliteSelected`: Requires a satellite to be selected for the plugin to function (default: true)
+- `isIconDisabled`: Controls whether the bottom icon is initially disabled
+- `mapWidth` and `mapHeight`: Set in the `settingsManager` to control the map dimensions
+
+## Troubleshooting
+
+- If the map is not updating, check if a satellite is selected
+- Ensure that the browser window is active, as some browsers may limit background updates
+- For performance issues, consider adjusting the number of points used to draw the ground trace
+
+<Aside>
+  The map uses a stereographic projection, which may cause some distortion, especially near the poles. This is normal and does not affect the accuracy of the satellite positions.
+</Aside>
+
+Remember that the Stereo Map provides a 2D representation of a 3D orbit, which can be a useful complement to the main 3D visualization in KeepTrack.

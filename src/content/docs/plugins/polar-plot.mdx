@@ -1,0 +1,85 @@
+---
+title: Polar Plot
+description: A KeepTrack plugin that generates and displays polar plots for satellite passes.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Polar Plot Plugin is a component of the KeepTrack application that generates and displays polar plots for satellite passes. These plots visualize a satellite's azimuth and elevation over time from a selected sensor's perspective.
+
+## Features
+
+- Generates polar plots for the first satellite passes in the next 72-hour period
+- Displays the plot in a side menu with a canvas element
+- Allows saving the plot as a PNG image
+- Integrates with other KeepTrack components like SelectSatManager and SensorManager
+- Updates the plot when the time offset changes
+- Provides keyboard shortcut ('P') for quick access
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+1. A "Polar Plot" icon in the bottom menu for quick access
+2. A side menu containing:
+   - A canvas element displaying the polar plot
+   - A "Save Image" button to download the plot
+
+## Usage
+
+<Steps>
+1. Select a Satellite
+2. Select a Sensor
+3. Click the "Polar Plot" icon in the bottom menu (or press 'P' on your keyboard)
+4. View the generated polar plot in the side menu
+5. (Optional) Click "Save Image" to download the plot as a PNG file
+</Steps>
+
+<Aside type="tip">
+  You can use the 'P' key on your keyboard to quickly toggle the Polar Plot menu on and off.
+</Aside>
+
+## Plot Information
+
+The polar plot displays the following information:
+
+- Azimuth (0° to 360°) around the circumference of the plot
+- Elevation (0° to 90°) from the edge to the center of the plot
+- Satellite's path during its pass, represented by a white line
+- Start point of the pass (green dot)
+- End point of the pass (red dot)
+- Satellite number and pass duration in the title
+
+## Integration with KeepTrack
+
+The PolarPlotPlugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **SensorManager**: Gets the current sensor information
+- **TimeManager**: Handles time-related calculations and offsets
+- **SoundManager**: Plays sound effects for user interactions
+- **InputManager**: Registers keyboard events
+
+## Development
+
+When extending or modifying the PolarPlotPlugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SelectSatManager plugin
+- The plot is generated using HTML5 Canvas
+- The plugin listens for time offset changes and satellite selection events to update the plot
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRequireSatelliteSelected`: Set to `true`, requires a satellite to be selected
+- `isRequireSensorSelected`: Set to `true`, requires a sensor to be selected
+- `dragOptions`: Configures the draggability and size limits of the side menu
+
+## Troubleshooting
+
+- If the plot is not displaying, ensure that both a satellite and a sensor are selected
+- Check that the satellite is visible from the sensor within the next 72 hours
+- Verify that the canvas element is properly initialized and visible in the DOM

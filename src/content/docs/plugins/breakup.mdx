@@ -1,0 +1,133 @@
+---
+title: Breakup
+description: A KeepTrack plugin that simulates satellite breakups by creating multiple debris objects.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Breakup plugin is a complex component of the KeepTrack application that simulates satellite breakups. It allows users to create multiple debris objects from a selected satellite, modifying orbital parameters to simulate various breakup scenarios.
+
+<Aside type="danger">
+  The Breakup plugin is designed for educational and research purposes. It provides a simplified model of satellite breakups and should not be used for critical decision-making in real-world space operations.
+</Aside>
+
+## Features
+
+- Simulate satellite breakups by creating multiple debris objects
+- Customize breakup parameters including inclination, period, and right ascension variations
+- Specify the number of debris pieces to generate
+- Automatically position debris based on the parent satellite's current location
+- Integration with other KeepTrack components for seamless operation
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Create Breakup" icon in the bottom menu for quick access
+2. A side menu with detailed breakup configuration options
+3. Form inputs for customizing breakup parameters
+4. A submit button to initiate the breakup simulation
+</Steps>
+
+## Breakup Configuration Options
+
+Users can configure the following parameters for a simulated breakup:
+
+- Inclination Variation (0 to 1 degree)
+- Period Variation (0 to 5 percent)
+- Right Ascension Variation (0 to 1 degree)
+- Number of Debris Pieces (10 to 1000)
+
+<Aside type="tip">
+  When simulating a breakup, start with small variations (e.g., 0.2 degrees for inclination and right ascension, 2% for period) and a moderate number of debris pieces (e.g., 25-50). This will help you understand the plugin's behavior before creating larger, more complex simulations.
+</Aside>
+
+## Usage
+
+### Simulating a Satellite Breakup
+
+<Steps>
+1. Select a satellite using the satellite selection tool
+2. Click the "Create Breakup" icon in the bottom menu
+3. Adjust the breakup parameters in the side menu form:
+   - Inclination Variation
+   - Period Variation
+   - Right Ascension Variation
+   - Number of Debris Pieces
+4. Click the "Create Breakup" button to initiate the simulation
+</Steps>
+
+### Limitations
+
+- The plugin currently only supports breakups for satellites in near-circular orbits (apogee - perigee ≤ 1000 km)
+- The maximum number of debris pieces is limited to 1000
+
+<Aside type="caution">
+  Creating a large number of debris pieces (e.g., 500-1000) can significantly impact application performance on low to mid-range devices. If you experience performance issues, reduce the number of debris pieces or use a more powerful device.
+</Aside>
+
+## Integration with KeepTrack
+
+The Breakup plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **CatalogManager**: Manages the satellite catalog and creates new debris objects
+- **OrbitManager**: Updates orbit buffer data for new debris objects
+- **TimeManager**: Provides current simulation time for calculations
+- **MainCamera**: Adjusts camera behavior during breakup simulation
+- **UiManager**: Manages UI updates and search functionality
+- **SatMath**: Performs various orbital calculations
+
+## Development
+
+When extending or modifying the Breakup plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the OrbitFinder class to calculate new orbital parameters
+- The plugin creates multiple debris objects by modifying TLE data
+- Debris objects are created as analyst satellites with IDs starting from `CatalogManager.ANALYST_START_ID`
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `maxDifApogeeVsPerigee_`: Maximum difference between apogee and perigee for eligible satellites (default: 1000 km)
+- `isRequireSatelliteSelected`: Requires a satellite to be selected for the plugin to function (default: true)
+- `isIconDisabledOnLoad`: The bottom icon is initially disabled (default: true)
+
+## Breakup Simulation Process
+
+<Steps>
+1. Retrieve the selected satellite's data
+2. Calculate the satellite's current position (latitude, longitude, altitude)
+3. Determine the satellite's direction of motion (ascending or descending)
+4. Create a new orbit based on the satellite's current position
+5. Generate debris objects by modifying the new orbit's parameters:
+   - Vary inclination within the specified range
+   - Adjust eccentricity slightly
+   - Modify mean motion (period) within the specified range
+   - Distribute debris across multiple right ascension offsets
+6. Create new satellite objects for each piece of debris
+7. Update the satellite catalog and orbit buffer with the new debris objects
+8. Trigger a search to display the newly created debris
+</Steps>
+
+## Troubleshooting
+
+- If the "Create Breakup" icon is disabled, ensure a valid satellite is selected and its orbit is near-circular
+- Check the browser console for error messages if the breakup simulation fails
+- If debris objects are not visible after simulation, try adjusting the search settings or time controls
+
+## Security Considerations
+
+- The plugin includes basic input validation for form fields
+- When extending the plugin, ensure proper sanitization for all user inputs to prevent potential security vulnerabilities
+
+## Performance Considerations
+
+- Creating a large number of debris objects (e.g., 1000) may impact application performance
+- The plugin optimizes calculations by using the OrbitFinder class and distributing debris across multiple right ascension offsets
+
+By understanding and utilizing the Breakup plugin, users can simulate complex satellite breakup scenarios within the KeepTrack application, providing valuable insights into orbital debris propagation and space situational awareness.

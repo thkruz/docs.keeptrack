@@ -1,0 +1,82 @@
+---
+title: Sensor Surveillance Fence
+description: A KeepTrack plugin that provides functionality for visualizing a surveillance fence for selected sensors.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Sensor Surveillance Fence Plugin is a component of the KeepTrack application that allows users to visualize a surveillance fence for selected sensors. This plugin enhances the space situational awareness capabilities of the application by providing a visual representation of a sensor's surveillance area.
+
+A surveillance fence is a region of space that a sensor is likely to scan or monitor. By visualizing this area, users can better understand the coverage and capabilities of the selected sensor. Sensor's can't look everywhere at once, so the fence represents the area where the sensor is most likely to detect objects.
+
+<Aside type="tip">
+  Some sensors are volumenetric, meaning they continuously scan a 3D area. These sensors will show a 3D volume even when surviellaance fence is enabled.
+</Aside>
+
+## Features
+
+- Toggle surveillance fence visualization for selected sensors
+- Integration with other sensor-related plugins
+- Responsive to sensor selection and deselection events
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Sensor Fence" icon in the bottom menu for quick access
+</Steps>
+
+<Aside>
+  The icon is initially disabled and only becomes active when a sensor is selected.
+</Aside>
+
+## Usage
+
+### Enabling Surveillance Fence View
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Click the "Sensor Fence" icon in the bottom menu
+3. The visualization will update to display the surveillance fence for the selected sensor
+</Steps>
+
+### Disabling Surveillance Fence View
+<Steps>
+1. Click the "Sensor Fence" icon again to disable the visualization
+</Steps>
+
+<Aside>
+  The Sensor Surveillance Fence view is mutually exclusive with the Sensor FOV view. Enabling one will automatically disable the other.
+</Aside>
+
+## Integration with KeepTrack
+
+The Sensor Surveillance Fence Plugin integrates with several KeepTrack components:
+
+- **SensorFov Plugin**: Coordinates with this plugin to ensure only one view (FOV or Fence) is active at a time
+- **Event System**: Responds to sensor selection and deselection events
+
+<Aside type="caution">
+  There are some edge cases where the icon might remain available when it should be disabled. While this doesn't break functionality, it's a known issue that may be addressed in future updates.
+</Aside>
+
+## Development
+
+When extending or modifying the Sensor Surveillance Fence Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for sensor selection and deselection
+- The `enableSurvView_` and `disableSurvView` methods control the visualization state
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconCallback`: Function called when the bottom icon is clicked
+- `isRequireSensorSelected`: Set to `true`, requiring a sensor to be selected for the plugin to function
+
+## Troubleshooting
+
+- If the "Sensor Fence" icon remains disabled after selecting a sensor, check if the sensor selection event is being properly triggered
+- Ensure that the required dependencies (e.g., SensorFov plugin) are properly initialized

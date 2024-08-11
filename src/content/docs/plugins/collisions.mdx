@@ -1,0 +1,98 @@
+---
+title: Collisions
+description: A guide to using the Collisions Plugin in KeepTrack.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+The Collisions Plugin provides functionality to display and interact with potential satellite collision events in the KeepTrack application.
+
+## Features
+
+- Fetches and displays a list of potential satellite collisions
+- Allows users to select and view details of specific collision events
+- Updates the application time to the time of the selected collision
+- Integrates with other KeepTrack components for satellite selection and time management
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Collisions" icon in the bottom menu for quick access
+2. A side menu displaying a table of potential collision events
+3. A help popup providing information about the Collisions Menu
+</Steps>
+
+## Collision Information Displayed
+
+- Time of Closest Approach (TOCA)
+- Satellite numbers for both objects involved
+- Maximum probability of collision
+- Minimum range between objects (in kilometers)
+- Relative speed between objects (in km/s)
+
+## Usage
+
+### Viewing Collision Data
+<Steps>
+1. Click the "Collisions" icon in the bottom menu
+2. The side menu will open, displaying a table of potential collisions
+3. If it's the first time opening, the plugin will fetch the collision data
+</Steps>
+
+### Interacting with Collision Events
+<Steps>
+1. Click on a row in the collision table
+2. The application will:
+   - Select the two satellites involved in the collision
+   - Change the simulation time to 30 seconds before the collision event
+   - Update the main view to focus on the selected satellites
+</Steps>
+
+<Aside type="tip">
+  You can use the time controls to adjust the view slightly before or after the collision event for better analysis.
+</Aside>
+
+## Integration with KeepTrack
+
+The Collisions Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: For selecting the satellites involved in a collision
+- **TimeManager**: To update the simulation time to the collision event
+- **MainCamera**: To adjust the view focus
+- **UiManager**: For handling UI interactions and searches
+- **CatalogManager**: To retrieve satellite information
+
+<Aside>
+  The plugin uses the SOCRATES (Satellite Orbital Conjunction Reports Assessing Threatening Encounters in Space) data for collision predictions. This data is fetched from a JSON file located at './tle/SOCRATES.json'.
+</Aside>
+
+## Development
+
+When extending or modifying the Collisions Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Collision data is fetched asynchronously and stored in the `collisionList_` property
+- The UI is generated dynamically based on the fetched collision data
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `collisionDataSrc`: The source URL for the collision data JSON file
+- `dragOptions`: Configures the draggability of the side menu
+
+<Aside type="caution">
+  If you modify the `collisionDataSrc`, ensure that the new data source follows the same format as the SOCRATES JSON file to maintain compatibility.
+</Aside>
+
+## Troubleshooting
+
+- If the collision table is empty, check the browser console for any error messages
+- Verify that the `collisionDataSrc` URL is correct and accessible
+- Ensure that the required KeepTrack components (SelectSatManager, TimeManager, etc.) are properly initialized
+
+<Aside type="note">
+  The collision data is only fetched once per session. If you need to refresh the data, you may need to reload the application.
+</Aside>

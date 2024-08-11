@@ -1,0 +1,104 @@
+---
+title: Sound Manager
+description: A KeepTrack plugin that manages audio playback and speech synthesis for the application.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Sound Manager Plugin is a component of the KeepTrack application that provides functionality for playing sound effects and synthesizing speech. It enhances the user experience by providing auditory feedback for various actions and events within the application.
+
+## Features
+
+- Play various sound effects including clicks, beeps, whooshes, and more
+- Synthesize speech for text-to-speech functionality
+- Mute/unmute audio playback
+- Volume control for specific sound effects
+- Random sound selection for variety in audio feedback
+
+## User Interface
+
+The plugin primarily operates in the background and does not add visible UI elements. However, it integrates with other KeepTrack components to respond to user interactions.
+
+## Usage
+
+### Playing Sound Effects
+
+To play a sound effect, use the `play` method with the appropriate `SoundNames` enum value:
+
+```typescript
+soundManager.play(SoundNames.CLICK);
+```
+
+### Stopping Sound Effects
+
+To stop a sound effect, use the `stop` method:
+
+```typescript
+soundManager.stop(SoundNames.CHATTER);
+```
+
+### Text-to-Speech
+
+To use text-to-speech functionality:
+
+```typescript
+soundManager.speak("Hello, KeepTrack user!");
+```
+
+## Integration with KeepTrack
+
+The Sound Manager Plugin integrates with several KeepTrack components:
+
+- **UiManager**: Initializes voices for speech synthesis
+- **Other plugins**: Can call sound effects in response to user actions
+
+<Aside>
+  The Sound Manager is registered as a singleton, allowing easy access from other parts of the application.
+</Aside>
+
+## Development
+
+When extending or modifying the Sound Manager Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Sound files are imported and stored in the `sounds` object
+- The `play` method handles different sound types, including random selection for variety
+
+<Aside type="tip">
+  When adding new sounds, make sure to update the `SoundNames` enum and import the corresponding audio file.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isMute`: Boolean flag to mute/unmute all sounds
+- Individual volume settings for specific sounds (e.g., `sounds.loading.volume = 0.25`)
+
+## Troubleshooting
+
+- If sounds are not playing, check if the browser tab is active (`navigator.userActivation.hasBeenActive`)
+- Ensure that the loading screen is not visible when attempting to play sounds
+- For speech synthesis issues, verify that the selected voice is available in the user's browser
+
+<Aside type="caution">
+  Some browsers may have restrictions on audio playback before user interaction. Ensure that sounds are triggered by user actions when possible.
+</Aside>
+
+## Performance Considerations
+
+- The plugin implements a cooldown for certain long audio clips to prevent excessive playback
+- Chatter sounds are managed to avoid overlapping playback
+
+<Aside>
+  The Sound Manager uses a fade-out effect when stopping sounds, providing a smoother audio experience.
+</Aside>
+
+## Additional Notes
+
+- The plugin supports a wide range of sound effects, categorized into types like clicks, beeps, and whooshes
+- The chatter functionality simulates background communication, adding atmosphere to the application
+- Speech synthesis uses the "Google UK English Female" voice by default, but this can be customized
+
+Remember to respect user preferences regarding audio playback and provide options for users to control the audio experience within your application.

@@ -1,0 +1,110 @@
+---
+title: Color Menu
+description: A KeepTrack plugin that allows users to change the color scheme used to render objects in the visualization.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Color Menu plugin is a component of the KeepTrack application that provides functionality for changing the color scheme used to render objects in the space visualization.
+
+## Features
+
+- Change color schemes based on various object properties and characteristics
+- Accessible via bottom menu icon and right-click context menu
+- Integration with legend display
+- Support for multiple color schemes including object type, sunlight status, velocity, orbit density, and more
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Color Schemes" icon in the bottom menu for quick access
+2. A side menu with a list of available color schemes
+3. A "Color Scheme" option in the right-click context menu
+4. A submenu in the right-click context menu with quick access to popular color schemes
+</Steps>
+
+<Aside>
+  The side menu can be dragged to expand the size of the color scheme list for easier selection.
+</Aside>
+
+## Color Schemes Available
+
+<Steps>
+1. Object Type (default)
+2. Sunlight
+3. Velocity
+4. Orbit Density
+5. Confidence Level
+6. Radar Cross Section (RCS)
+7. Starlink
+8. Small Satellites
+9. Countries
+10. Near Earth
+11. Deep Space
+12. Elset Age
+13. Lost Objects
+</Steps>
+
+<Aside>
+  Some color schemes, like "Sunlight" and "Elset Age", may require additional calculations and might take a moment to update the visualization.
+</Aside>
+
+## Usage
+
+### Changing Color Scheme via Side Menu
+<Steps>
+1. Click the "Color Schemes" icon in the bottom menu
+2. Select a color scheme from the list in the side menu
+3. The visualization will update to reflect the new color scheme
+</Steps>
+
+### Changing Color Scheme via Right-Click Menu
+<Steps>
+1. Right-click anywhere on the visualization
+2. Hover over "Color Scheme" in the context menu
+3. Select a color scheme from the submenu
+4. The visualization will update to reflect the new color scheme
+</Steps>
+
+## Integration with KeepTrack
+
+The Color Menu Plugin integrates with several KeepTrack components:
+
+- **CatalogManager**: Handles satellite data and cruncher messages
+- **ColorSchemeManager**: Manages the application of different color schemes
+- **UiManager**: Handles UI updates and notifications
+- **LegendManager**: Updates the legend display based on the selected color scheme
+
+<Aside>
+  When changing color schemes, any currently selected satellite will be deselected to ensure a consistent view of all objects.
+</Aside>
+
+## Development
+
+When extending or modifying the Color Menu Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions
+- Color scheme changes are handled by the `colorsMenuClick` static method
+- Some color schemes require additional processing (e.g., sunlight calculations)
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconImg`: Image for the bottom menu icon
+- `bottomIconLabel`: Label for the bottom menu icon
+- `dragOptions`: Configuration for making the side menu draggable
+
+<Aside type="caution">
+  When adding new color schemes, ensure to update both the side menu and right-click context menu HTML, as well as the `colorsMenuClick` method to handle the new scheme.
+</Aside>
+
+## Troubleshooting
+
+- If a color scheme doesn't appear to change, check the browser console for any error messages
+- Ensure that the required KeepTrack components (CatalogManager, ColorSchemeManager, etc.) are properly initialized
+- For performance issues with certain color schemes, consider optimizing the calculation methods or adding loading indicators for long-running processes

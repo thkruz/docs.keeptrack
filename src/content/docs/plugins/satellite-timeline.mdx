@@ -1,0 +1,92 @@
+---
+title: Satellite Timeline
+description: A KeepTrack plugin that visualizes satellite passes over time for selected sensors and satellites.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Satellite Timeline Plugin is a component of the KeepTrack application that provides a visual representation of satellite passes over a specified time period. It allows users to see when satellites are visible from a selected sensor, making it easier to plan observations or analyze satellite coverage.
+
+## Features
+
+- Visualize satellite passes for multiple satellites over a configurable time period
+- Color-coded pass quality indication (red for bad, yellow for average, green for good)
+- Interactive timeline with hover tooltips and click-to-select functionality
+- Configurable settings for calculation length, interval, and pass quality thresholds
+- Export timeline as a PNG image
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Satellite Timeline" icon in the bottom menu for quick access
+2. A side menu with the timeline canvas and configuration options
+3. A download button to export the timeline as an image
+</Steps>
+
+## Usage
+
+### Viewing the Satellite Timeline
+<Steps>
+1. Select a sensor using the Sensor List Plugin
+2. Add satellites to the watchlist or select a satellite
+3. Click the "Satellite Timeline" icon in the bottom menu
+4. View the timeline showing satellite passes over the configured time period
+</Steps>
+
+<Aside>
+  The timeline will only display passes for satellites that are within the sensor's maximum range. Satellites with orbits completely beyond the sensor's range will be excluded.
+</Aside>
+
+### Interacting with the Timeline
+- Hover over a pass to see detailed information (satellite number, pass start and end times)
+- Click on a pass to select that satellite and set the simulation time to the start of the pass
+
+### Configuring Timeline Settings
+<Steps>
+1. Click the settings icon in the Satellite Timeline side menu
+2. Adjust the following settings:
+   - Calculation Length (Hours)
+   - Calculation Interval (Seconds)
+   - Bad Pass Length (Seconds)
+   - Average Pass Length (Seconds)
+3. The timeline will automatically update based on your new settings
+</Steps>
+
+<Aside type="tip">
+  Increasing the calculation length will show more passes but may impact performance. Adjust the interval to balance between accuracy and calculation speed.
+</Aside>
+
+## Integration with KeepTrack
+
+The Satellite Timeline Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **WatchlistPlugin**: Gets the list of satellites to display on the timeline
+- **SensorManager**: Retrieves sensor information for pass calculations
+- **TimeManager**: Handles time-related calculations and updates
+- **CatalogManager**: Accesses satellite data for pass calculations
+
+<Aside>
+  The plugin requires at least one satellite to be selected or added to the watchlist, and a sensor to be selected before it can generate a timeline.
+</Aside>
+
+## Development
+
+When extending or modifying the Satellite Timeline Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Pass calculations are performed using the SatMath utility
+- The timeline is drawn on an HTML5 canvas, with separate static and dynamic layers for performance
+
+## Troubleshooting
+
+- If the timeline is not displaying, ensure that a sensor is selected and at least one satellite is either selected or in the watchlist
+- For performance issues with long calculation periods, try increasing the calculation interval
+- If passes are not showing for a specific satellite, check if it's within the sensor's maximum range
+
+<Aside type="caution">
+  The plugin uses the SGP4 propagator for orbit calculations. For very long calculation periods, the accuracy of pass predictions may decrease. It's recommended to keep the calculation length within reasonable bounds (e.g., a few days to a week).
+</Aside>

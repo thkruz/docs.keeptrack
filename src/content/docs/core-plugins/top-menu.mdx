@@ -1,0 +1,97 @@
+---
+title: Top Menu
+description: A KeepTrack plugin that manages the top navigation menu, including sound control, legend, help, fullscreen, and search functionality.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Top Menu Plugin is a component of the KeepTrack application that provides the main navigation menu at the top of the interface. It includes various controls and features to enhance user interaction and accessibility.
+
+## Features
+
+- Sound control toggle
+- Legend menu access
+- Tutorial/Help button
+- Fullscreen mode toggle
+- Search functionality
+- Responsive design for mobile and desktop
+
+## User Interface
+
+The plugin adds the following UI elements to the top of the application:
+
+<Steps>
+1. Sound toggle button
+2. Legend menu button
+3. Tutorial/Help button
+4. Fullscreen toggle button
+5. Search icon and input field
+</Steps>
+
+<Aside>
+  The search input is initially hidden and slides up when the search icon is clicked, providing a clean interface when not in use.
+</Aside>
+
+## Usage
+
+### Sound Control
+- Click the sound icon to toggle audio on/off
+- The icon changes to indicate the current audio state
+
+### Legend Menu
+- Click the layers icon to open the legend menu
+- The legend provides information about the various object types and colors used in the visualization
+
+### Tutorial/Help
+- Click the help icon to access the tutorial or help information
+- This opens a modal with context-sensitive advice
+
+### Fullscreen Mode
+- Click the fullscreen icon to toggle fullscreen mode for the application
+
+### Search Functionality
+- Click the search icon to reveal the search input field
+- Enter search terms to find specific objects or information within the application
+
+<Aside type="tip">
+  The search functionality supports various identifiers including object names, NORAD catalog numbers, and international designators.
+</Aside>
+
+## Integration with KeepTrack
+
+The Top Menu Plugin integrates with several KeepTrack components:
+
+- **SoundManager**: Controls audio playback and muting
+- **UiManager**: Handles UI initialization and updates
+- **AdviceManager**: Provides context-sensitive help and tutorials
+
+## Development
+
+When extending or modifying the Top Menu Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI initialization and finalization
+- HTML content is added dynamically using the `keepTrackApi.html` template literal tag
+
+<Aside type="caution">
+  When adding new features to the top menu, ensure they are responsive and work well on both desktop and mobile devices.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- Icon images are imported and can be easily replaced or updated
+- CSS classes control the appearance and behavior of menu items
+
+## Troubleshooting
+
+- If the sound toggle doesn't work, check if the SoundManager is properly initialized
+- For search issues, verify that the search input field is properly connected to the search functionality
+
+<Aside>
+  The plugin uses error handling to warn users if the SoundManager is not enabled, helping to identify configuration issues.
+</Aside>
+
+Remember to test all features of the Top Menu Plugin after making any modifications, as it's a central component of the user interface and affects the overall user experience of the KeepTrack application.

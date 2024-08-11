@@ -1,0 +1,95 @@
+---
+title: Sat Constellations
+description: A KeepTrack plugin that allows users to view and interact with satellite constellations and groups.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Sat Constellations Plugin is a component of the KeepTrack application that provides functionality for viewing and interacting with predefined groups of satellites, known as constellations.
+
+## Features
+
+- View predefined satellite constellations and groups
+- Visualize uplink/downlink and crosslink connections for certain constellations
+- Accessible via bottom menu icon
+- Integration with search functionality and group management
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Constellations" icon in the bottom menu for quick access
+2. A side menu with a list of available satellite constellations and groups
+</Steps>
+
+## Available Constellations and Groups
+
+The plugin provides access to various satellite groups, including:
+
+- Space Stations
+- Amateur Radio satellites
+- GPS, Galileo, and GLONASS navigation satellites
+- Communication satellite constellations (Iridium, Orbcomm, Globalstar, SES)
+- Military satellite systems (Milstar, AEHF, DSCS, WGS, SBIRS)
+- Commercial constellations (Starlink)
+
+<Aside>
+  Some constellations, like AEHF and WGS, will display notional uplink/downlink and crosslink connections when selected.
+</Aside>
+
+## Usage
+
+### Viewing a Satellite Constellation
+<Steps>
+1. Click the "Constellations" icon in the bottom menu
+2. Select a constellation or group from the list in the side menu
+3. The visualization will update to highlight the selected group of satellites
+4. For certain constellations, connection lines will be drawn between satellites
+</Steps>
+
+<Aside type="tip">
+  When a constellation is selected, the search bar will be populated with the satellite numbers of the group, allowing for easy further analysis.
+</Aside>
+
+## Integration with KeepTrack
+
+The Sat Constellations Plugin integrates with several KeepTrack components:
+
+- **GroupManager**: Creates and manages satellite groups
+- **CatalogManager**: Handles satellite data and manages constellation links
+- **LineManager**: Draws connection lines between satellites in certain constellations
+- **TimeManager**: Provides current time for constellation visualizations
+- **UiManager**: Handles UI updates and search functionality
+
+## Development
+
+When extending or modifying the Sat Constellations Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions
+- Constellation selection is handled by the `constellationMenuClick` static method
+- Some constellations require additional processing to display connection lines
+
+<Aside type="caution">
+  When adding new constellations, ensure to update both the side menu HTML and the `constellationMenuClick` method to handle the new group.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconImg`: Image for the bottom menu icon
+- `bottomIconLabel`: Label for the bottom menu icon
+- `dragOptions`: Configuration for making the side menu draggable
+
+## Troubleshooting
+
+- If a constellation doesn't appear to load, check the browser console for any error messages
+- Ensure that the required KeepTrack components (GroupManager, CatalogManager, etc.) are properly initialized
+- For performance issues with large constellations, consider optimizing the group creation methods or adding loading indicators for long-running processes
+
+<Aside>
+  The plugin uses regular expressions for some group selections. If a satellite isn't appearing in an expected group, verify that its name matches the regex pattern used for that group.
+</Aside>

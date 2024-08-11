@@ -1,0 +1,147 @@
+---
+title: Basic Orbital Mechanics Concepts
+description: A comprehensive guide to the fundamental concepts of orbital mechanics for users of astrodynamics tools, with a focus on concepts relevant to KeepTrack.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+This guide covers the essential concepts of orbital mechanics that you'll need to understand when working with astrodynamics tools, particularly KeepTrack. Whether you're tracking satellites or analyzing orbits, these fundamentals will provide a solid foundation.
+
+## Orbital Elements
+
+To describe an orbit fully, we only need six orbital elements:
+
+1. **Semi-major axis (a)**: Half the longest diameter of the elliptical orbit.
+2. **Eccentricity (e)**: Measures how much the orbit deviates from a perfect circle.
+3. **Inclination (i)**: The angle between the orbital plane and the reference plane.
+4. **Right Ascension of the Ascending Node (Ω)**: The angle from the reference direction to the ascending node.
+5. **Argument of Periapsis (ω)**: The angle from the ascending node to the periapsis.
+6. **True Anomaly (ν)**: The angle from the periapsis to the object's current position.
+
+These elements define the size, shape, and orientation of an orbit in space at a given time. With that knowledge we can then predict the future positions of objects in orbit using [propagation methods](#propagation-methods).
+
+<Aside>
+  These elements are often referred to as Keplerian elements, named after Johannes Kepler, who first described the laws of planetary motion.
+</Aside>
+
+## Types of Orbits
+
+Different orbits serve various purposes in space missions:
+
+- **Low Earth Orbit (LEO)**: Altitude of 160-2000 km, used for Earth observation and many communication satellites.
+- **Medium Earth Orbit (MEO)**: Altitude of 2000-35,786 km, used for navigation satellites like GPS.
+- **Geosynchronous Orbit (GEO)**: Altitude of 35,786 km, where satellites have an orbital period equal to Earth's rotational period.
+- **Highly Elliptical Orbit (HEO)**: Elliptical orbits with high eccentricity, useful for communications in high latitudes.
+- **Sun-Synchronous Orbit (SSO)**: A nearly polar orbit that passes over any given point of the Earth's surface at the same local solar time.
+
+## Two-Line Element Sets (TLEs)
+
+Rather than use Keplerian elements, KeepTrack uses Two-Line Element sets (TLEs) to describe satellite orbits.
+TLEs are a data format used to convey orbital information for Earth-orbiting objects:
+
+- TLEs consist of two 69-character lines of data that encode the orbital elements and other information about a satellite.
+- They include the satellite's catalog number, classification, epoch time, orbital elements, and other parameters.
+- TLEs have been widely used for satellite tracking and orbit prediction since the 1960s.
+
+### Example TLE
+
+```
+ISS (ZARYA)
+1 25544U 98067A   08264.51782528 -.00002182  00000-0 -11606-4 0  2927
+2 25544  51.6416 247.4627 0006703 130.5360 325.0288 15.72125391563537
+```
+
+<Aside>
+  Unlike many other tools, KeepTrack preloads all of the TLEs for you, so you don't need to worry about finding or entering them manually. You can replace them with your own TLEs if you have them!
+</Aside>
+
+### TLE Field Explanation
+
+Let's break down each field in the TLE:
+
+#### Line 0 (Optional)
+```
+ISS (ZARYA)
+```
+This is the common name of the satellite. It's not always present and is not used in calculations.
+
+#### Line 1
+```
+1 25544U 98067A   08264.51782528 -.00002182  00000-0 -11606-4 0  2927
+```
+
+- `1`: Line number
+- `25544`: Satellite catalog number
+- `U`: Classification (U = Unclassified)
+- `98067A`: International Designator (launch year, launch number, piece of the launch)
+- `08264.51782528`: Epoch (year 2008, day 264.51782528)
+- `-.00002182`: First Time Derivative of the Mean Motion
+- `00000-0`: Second Time Derivative of Mean Motion (decimal point assumed)
+- `-11606-4`: BSTAR drag term (decimal point assumed)
+- `0`: Ephemeris type
+- `2927`: Element set number
+
+#### Line 2
+```
+2 25544  51.6416 247.4627 0006703 130.5360 325.0288 15.72125391563537
+```
+
+- `2`: Line number
+- `25544`: Satellite catalog number (same as line 1)
+- `51.6416`: Inclination (degrees)
+- `247.4627`: Right Ascension of the Ascending Node (degrees)
+- `0006703`: Eccentricity (decimal point assumed)
+- `130.5360`: Argument of Perigee (degrees)
+- `325.0288`: Mean Anomaly (degrees)
+- `15.72125391`: Mean Motion (revolutions per day)
+- `563537`: Revolution number at epoch
+
+### Interpreting TLE Data
+
+- The epoch tells you when the orbital elements were measured. TLEs become less accurate as you propagate further from this date.
+- Inclination, RAAN, eccentricity, argument of perigee, and mean motion are the key orbital elements that define the satellite's orbit.
+- The mean motion can be used to calculate the orbital period: `Period (minutes) = 1440 / Mean Motion`
+- The BSTAR term is used in the SGP4 propagator to model atmospheric drag.
+
+<Aside type="tip">
+  You don't need to master the TLE format to use KeepTrack, but the advanced features will make more sense if you do!
+</Aside>
+
+## Coordinate Systems
+
+There are many ways to describe where something is. Consider how you might describe the location of your home:
+
+- **Street Address**: Specific to your city and country.
+- **Latitude and Longitude**: Global coordinates that pinpoint your location on Earth.
+- **Distance and Direction**: Relative to a nearby landmark or intersection.
+
+These are all different coordinate systems that serve different purposes. In astrodynamics, we use specific systems to describe the positions and motions of objects in space:
+
+- **Earth-Centered Inertial (ECI)**: Origin at Earth's center, fixed with respect to the stars.
+- **Earth-Centered Earth-Fixed (ECEF)**: Origin at Earth's center, rotates with the Earth.
+- **Range, Azimuth, Elevation (RAE)**: Spherical coordinate system often used for ground-based observations.
+- **Latitude, Longitude, Altitude (LLA)**: Geographic coordinates with altitude above the Earth's surface.
+- **Radial, In-Track, Cross-Track (RIC)**: Satellite-centered coordinate system used for relative motion and formation flying.
+
+## Propagation Methods
+
+Techniques for predicting future positions of orbiting objects:
+
+- **Two-Body Problem**: Simplest model, considers only the gravitational interaction between two bodies.
+- **Special Perturbations**: Numerical integration of equations of motion, including perturbations.
+- **General Perturbations**: Analytical solutions that model the effects of perturbations over time.
+
+### SGP4 in KeepTrack
+
+KeepTrack uses the Simplified General Perturbations 4 (SGP4) model for orbit propagation. Here's why:
+
+- **Standard for TLEs**: SGP4 is the standard propagator used with Two-Line Element sets, making it compatible with widely available satellite data.
+- **Computational Efficiency**: SGP4 provides a good balance between accuracy and computational speed, allowing for real-time tracking of multiple objects.
+- **Perturbation Modeling**: While simplified, SGP4 includes models for major perturbations like Earth's oblateness (J2 effect) and atmospheric drag, providing reasonable accuracy for most near-Earth satellites.
+- **Wide Adoption**: Its use in KeepTrack ensures compatibility with other satellite tracking systems and databases.
+- **Suitable Time Range**: SGP4 provides acceptable accuracy for propagation periods of 10+ days, which is sufficient for most use cases.
+
+<Aside type="danger">
+  SGP4-XP is an extended version of SGP4 that includes additional perturbation effects for higher accuracy. Currently it is only available in binary format and can't be used in TypeScript or JavaScript environments. These TLEs are very different and using them will result in error messages!
+</Aside>

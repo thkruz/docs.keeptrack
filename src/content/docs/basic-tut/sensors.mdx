@@ -1,0 +1,107 @@
+---
+title: Sensors
+description: An overview of sensors used in space situational awareness and satellite tracking, including both terrestrial and space-based sensors.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+After learning how to find and track satellites using KeepTrack, it's important to understand the tools that make this tracking possible: sensors. This overview will introduce you to the various types of sensors used in space situational awareness (SSA) and satellite tracking, their capabilities, and their applications.
+
+## Introduction to Space Tracking Sensors
+
+Sensors are the eyes and ears of space situational awareness. They detect, track, and characterize objects orbiting Earth, from active satellites to defunct spacecraft and debris. These sensors come in various forms, each with its own strengths and limitations.
+
+## Terrestrial vs. Space-Based Sensors
+
+Sensors for space tracking are primarily divided into two categories:
+
+<Steps>
+1. **Terrestrial Sensors**: Located on Earth's surface or in Earth's atmosphere.
+2. **Space-Based Sensors**: Mounted on satellites or other spacecraft in orbit.
+</Steps>
+
+<Aside>
+As of now, KeepTrack primarily focuses on modeling terrestrial sensors. Future updates may incorporate space-based sensors to provide a more comprehensive space situational awareness capability.
+</Aside>
+
+## Types of Terrestrial Sensors
+
+### Radar Systems
+
+Radar systems are the workhorses of space tracking, especially for objects in Low Earth Orbit (LEO) and Medium Earth Orbit (MEO). They operate by sending out radio waves and analyzing the reflections from objects in space. There are two main types:
+
+<Steps>
+1. **Phased Array Radars**: These advanced systems use electronically steered beams, allowing for rapid scanning of large areas of sky. They can track multiple objects simultaneously and quickly switch between different areas of interest.
+2. **Mechanical Radars**: These traditional systems use physically moving antennas to scan the sky. While generally less flexible than phased array systems, they can still provide valuable tracking data.
+</Steps>
+
+<Aside title="Technical Note">
+Radar systems are particularly effective for tracking objects in lower orbits due to the inverse square law - the strength of the radar return decreases with the square of the distance to the object.
+</Aside>
+
+### Optical Telescopes
+
+Optical telescopes play a crucial role in tracking objects in higher orbits, including those in Geosynchronous Earth Orbit (GEO). They work by detecting reflected sunlight from objects in space.
+
+<Steps>
+1. **Ground-Based Electro-Optical Deep Space Surveillance (GEODSS)**: These systems use large telescopes and sensitive cameras to detect faint objects at great distances.
+2. **Passive Optical Systems**: These range from large observatory telescopes to smaller, more numerous systems that can provide wide coverage.
+</Steps>
+
+<Aside type="tip">
+Optical systems are generally limited to nighttime observations when the sky is dark but the objects are illuminated by the sun. This creates predictable windows for observation. There is a special color scheme called `Sunlight` in KeepTrack that highlights objects visible in sunlight.
+</Aside>
+
+### Laser Ranging Systems
+
+Laser ranging systems provide extremely precise distance and velocity measurements for specific objects. They work by sending short pulses of laser light to a target and measuring the time it takes for the reflection to return.
+
+<Aside>
+**KeepTrack Insight:** While KeepTrack doesn't currently model laser ranging systems, their data often contributes to the high-precision orbital elements used in satellite tracking.
+</Aside>
+
+### Radio Telescopes
+
+Radio telescopes can detect radio emissions from active satellites or reflect radio signals off objects in space. They're particularly useful for studying the characteristics of satellites and space debris.
+
+## Space-Based Sensors
+
+While the satellites are modeled in KeepTrack, the sensors on those satellites are not. Space-based sensors are becoming increasingly important in SSA:
+
+<Steps>
+1. **Optical Sensors**: Cameras and telescopes mounted on satellites can provide continuous monitoring of areas like the GEO belt, free from terrestrial limitations like weather and day/night cycles.
+2. **Space-Based Radar**: These systems can provide all-weather, day-and-night tracking of objects in various orbits.
+3. **Space-Based Infrared Systems (SBIRS)**: These specialized sensors detect infrared emissions, useful for detecting rocket launches and characterizing objects in orbit.
+</Steps>
+
+## Sensor Networks
+
+Space tracking often relies on networks of sensors to provide comprehensive coverage. Some notable networks include:
+
+<Steps>
+1. **Space Surveillance Network (SSN)**: Operated by the US military, this network includes both radar and optical sensors distributed globally.
+2. **International Scientific Optical Network (ISON)**: A civilian network of optical telescopes used for scientific observation and space tracking.
+3. **European Space Surveillance and Tracking (EU SST)**: A European initiative combining data from various sensor types across multiple countries.
+</Steps>
+
+<Aside type="tip">
+You can select an entire sensor network in the Sensor List to see the combined coverage of all sensors in that network.
+</Aside>
+
+
+## Key Sensor Characteristics
+
+When working with KeepTrack or analyzing real-world space tracking data, it's important to understand these key sensor characteristics:
+
+<Steps>
+1. **Field of View (FOV)**: The area of sky a sensor can observe at once. Wide FOV sensors can survey large areas, while narrow FOV sensors often provide more detailed data.
+2. **Sensitivity**: This determines the smallest or faintest object a sensor can detect. More sensitive sensors can track smaller pieces of debris.
+3. **Tracking Rate**: How fast the sensor can follow a moving object. This is particularly important for tracking fast-moving objects in low orbits.
+4. **Wavelength**: The part of the electromagnetic spectrum the sensor operates in. This affects what types of objects and orbits the sensor is best suited to observe.
+5. **Resolution**: The level of detail the sensor can distinguish. Higher resolution can provide more accurate position data and potentially characterize the size and shape of objects.
+</Steps>
+
+## Conclusion
+
+As you continue to use KeepTrack, remember that the satellite positions and orbits you see are the result of complex sensor systems working together. Understanding these sensors and their capabilities can provide valuable context for your satellite tracking activities and help you appreciate the challenges and complexities of space situational awareness.

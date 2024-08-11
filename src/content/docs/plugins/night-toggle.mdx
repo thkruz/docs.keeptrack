@@ -1,0 +1,82 @@
+---
+title: Night Toggle
+description: A KeepTrack plugin that allows users to toggle between day and night textures for Earth visualization.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Night Toggle Plugin is a component of the KeepTrack application that provides functionality for switching between day and night textures when visualizing Earth.
+
+## Features
+
+- Toggle between day and night Earth textures
+- Accessible via bottom menu icon
+- Keyboard shortcut support
+- Integration with sound effects
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Night Toggle" icon in the bottom menu for quick access
+</Steps>
+
+<Aside>
+  The icon used for the Night Toggle feature is a day-night image, making it easily recognizable in the bottom menu.
+</Aside>
+
+## Usage
+
+### Toggling Night Mode
+<Steps>
+1. Click the "Night Toggle" icon in the bottom menu
+2. The Earth texture will switch between day and night views
+</Steps>
+
+<Aside type="tip">
+  You can also use the keyboard shortcut 'N' to quickly toggle between day and night modes without using the mouse.
+</Aside>
+
+## Integration with KeepTrack
+
+The Night Toggle Plugin integrates with several KeepTrack components:
+
+- **InputManager**: Registers keyboard events for toggling
+- **SoundManager**: Plays sound effects when toggling
+- **WebGL Context**: Manages texture binding for Earth visualization
+
+<Aside>
+  The plugin uses the KeepTrackApiEvents.nightToggle event to handle the actual texture switching in the WebGL context.
+</Aside>
+
+## Development
+
+When extending or modifying the Night Toggle Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers a keyboard event handler for the 'N' key
+- The toggle state is managed through the `isMenuButtonActive` property
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconElementName`: Set to 'menu-day-night'
+- `bottomIconLabel`: Set to 'Night Toggle'
+- `bottomIconImg`: Uses the imported `dayNightPng` image
+
+<Aside type="caution">
+  When modifying the plugin, ensure that the WebGL texture binding is handled correctly to avoid visual glitches during the toggle.
+</Aside>
+
+## Troubleshooting
+
+- If the toggle doesn't seem to work, check the browser console for any error messages
+- Ensure that the required textures (day and night) are properly loaded in the WebGL context
+- Verify that the sound files for toggle effects are available and correctly referenced
+
+<Aside>
+  If you encounter issues with the keyboard shortcut, make sure no other plugin or browser extension is intercepting the 'N' key press event.
+</Aside>

@@ -1,0 +1,85 @@
+---
+title: Launch Calendar
+description: A KeepTrack plugin that provides access to the launch calendar from Gunter's Space Page.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Launch Calendar Plugin is a component of the KeepTrack application that allows users to view upcoming space launches via Gunter's Space Page.
+
+<Aside>
+  Gunter's Space Page is provided free of charge and offers a comprehensive list of upcoming space launches.
+  If you feel inclined to support their work, consider donating to help maintain the service.
+  The link to donate will appear on the calendar page. **Gunter does not endorse or have any affiliation with KeepTrack.**
+</Aside>
+
+## Features
+
+- Quick access to the launch calendar via a bottom menu icon
+- Opens the calendar in a colorbox overlay
+- Automatically loads the current year's launch schedule
+- Prevents accidental closure of the calendar
+
+## User Interface
+
+The plugin adds the following UI element:
+
+<Steps>
+1. A "Launch Calendar" icon in the bottom menu for quick access
+</Steps>
+
+<Aside>
+  The launch calendar icon uses a calendar image for easy recognition.
+</Aside>
+
+## Usage
+
+<Steps>
+1. Click the "Launch Calendar" icon in the bottom menu
+2. The launch calendar for the current year will open in a colorbox overlay
+3. Browse the upcoming launches
+4. Close the colorbox to return to the main KeepTrack interface
+</Steps>
+
+<Aside type="tip">
+  The plugin automatically determines the current year and loads the appropriate calendar page.
+</Aside>
+
+## Integration with KeepTrack
+
+The Launch Calendar Plugin integrates with the following KeepTrack components:
+
+- **SettingsManager**: Used to prevent accidental closure of the colorbox
+- **ColorboxManager**: Handles opening and closing of the colorbox overlay
+
+## Development
+
+When extending or modifying the Launch Calendar Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses the `openColorbox` function to display the calendar
+- The plugin prevents colorbox closure for 2 seconds after opening to avoid accidental closures
+
+<Aside type="caution">
+  When modifying the plugin, ensure that the URL for Gunter's Space Page is kept up-to-date to maintain functionality.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconElementName`: The ID of the bottom menu icon element
+- `bottomIconImg`: The image used for the bottom menu icon
+- `bottomIconLabel`: The label for the bottom menu icon
+- `isForceHideSideMenus`: Set to `true` to hide side menus when the calendar is open
+
+## Troubleshooting
+
+- If the calendar doesn't open, check your internet connection
+- Ensure that the browser allows pop-ups for the KeepTrack site
+- If the calendar closes immediately after opening, check that the `settingsManager.isPreventColorboxClose` flag is being set correctly
+
+<Aside>
+  The Launch Calendar Plugin relies on an external website. If the calendar fails to load, it may be due to changes or issues with Gunter's Space Page.
+</Aside>

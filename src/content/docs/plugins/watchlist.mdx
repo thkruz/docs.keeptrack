@@ -1,0 +1,83 @@
+---
+title: Watchlist
+description: A KeepTrack plugin for creating and managing a list of satellites to actively monitor and display on the globe.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Watchlist Plugin is a component of the KeepTrack application that allows users to create and manage a list of priority satellites for tracking. This plugin enhances the user experience by providing quick access to satellites of interest and integrating with other KeepTrack features.
+
+## Features
+
+- Create and manage a list of priority satellites
+- Add satellites individually or in bulk
+- Remove satellites from the watchlist
+- Save and load watchlists
+- Integrate with other KeepTrack components for enhanced functionality
+
+## User Interface
+
+The Watchlist Plugin adds the following UI elements:
+
+- A "Watchlist" icon in the bottom menu for quick access
+- A side menu with options to add, remove, save, and load watchlist entries
+- A help overlay providing information about the plugin's functionality
+
+<Aside type="tip">
+  The watchlist is saved in your browser's local storage, allowing it to persist between sessions.
+</Aside>
+
+## Usage
+
+### Adding Satellites to the Watchlist
+
+1. Click the "Watchlist" icon in the bottom menu
+2. Enter satellite numbers in the "New Satellite(s)" input field
+3. Click the add button or press Enter to add the satellites
+
+<Aside>
+  You can add multiple satellites at once by separating their numbers with commas.
+</Aside>
+
+### Removing Satellites from the Watchlist
+
+1. Open the Watchlist menu
+2. Click the remove icon next to the satellite you want to remove
+
+### Saving and Loading Watchlists
+
+- To save your current watchlist, click the "Save List" button
+- To load a previously saved watchlist, click the "Load List" button and select your file
+
+<Aside type="caution">
+  Loading a watchlist will overwrite your current watchlist. Make sure to save your current list if you want to keep it.
+</Aside>
+
+## Integration with KeepTrack
+
+The Watchlist Plugin integrates with several KeepTrack components:
+
+- **Orbit Manager**: Manages the display of orbits for watchlist satellites
+- **Line Manager**: Draws lines between sensors and visible watchlist satellites
+- **UI Manager**: Handles toasts and search functionality
+- **Color Scheme Manager**: Updates the color scheme based on watchlist changes
+
+## Development Considerations
+
+When extending or modifying the Watchlist Plugin, keep in mind:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Watchlist data is stored in the `watchlistList` array
+- The `updateWatchlist` method is central to refreshing the plugin's state and UI
+
+<Aside type="note">
+  The plugin includes basic input validation, but consider adding more robust checks when extending its functionality.
+</Aside>
+
+## Troubleshooting
+
+- If satellites aren't appearing in the watchlist, ensure they exist in the catalog
+- Check the browser console for any error messages
+- Verify that the required KeepTrack components are properly initialized
+
+By leveraging the Watchlist Plugin, users can efficiently manage and monitor their satellites of interest within the KeepTrack application.

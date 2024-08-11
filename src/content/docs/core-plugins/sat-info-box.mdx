@@ -1,0 +1,91 @@
+---
+title: Satellite Info Box
+description: A comprehensive plugin for KeepTrack that displays detailed information about selected satellites, missiles, and other space objects.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Satellite Info Box Plugin is a crucial component of the KeepTrack application, providing users with detailed information about selected space objects, including satellites and missiles. This plugin enhances the user experience by offering a comprehensive view of orbital data, mission information, and sensor-related details.
+
+## Features
+
+- Displays detailed information for selected satellites and missiles
+- Provides orbital data, including apogee, perigee, inclination, and more
+- Shows mission-specific information such as purpose, contractor, and physical characteristics
+- Integrates with sensor data to show range, azimuth, elevation, and other sensor-related information
+- Offers quick access links for finding related objects and visualizing orbits
+- Supports watchlist functionality for easy tracking of specific objects
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A draggable info box that appears when a space object is selected
+2. Top links for quick actions and related object searches
+3. Sections for orbital data, object information, and sensor data
+4. A mission data section for satellites with additional details
+</Steps>
+
+<Aside>
+  The Satellite Info Box can be dragged around the screen for better visibility. Right-clicking on the box will reset its position to the default location.
+</Aside>
+
+## Usage
+
+### Viewing Object Information
+<Steps>
+1. Select a satellite or missile in the main view
+2. The Satellite Info Box will automatically appear with detailed information
+3. Scroll through the various sections to view different types of data
+4. Use the top links to perform quick actions or searches
+</Steps>
+
+### Watchlist Functionality
+<Steps>
+1. Select a satellite
+2. Click the "+" icon in the Satellite Info Box to add it to your watchlist
+3. Click the "-" icon to remove it from your watchlist
+</Steps>
+
+<Aside type="tip">
+  You can quickly toggle the Satellite Info Box visibility by pressing the 'i' key on your keyboard.
+</Aside>
+
+## Integration with KeepTrack
+
+The Satellite Info Box Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Manages the currently selected space object
+- **CatalogManager**: Provides access to the satellite catalog and object data
+- **SensorManager**: Supplies sensor-related information for the selected object
+- **TimeManager**: Handles time-related calculations and updates
+- **SoundManager**: Manages sound effects for user interactions
+- **LineManager**: Handles the creation of visual lines for orbit visualization
+
+<Aside type="caution">
+  The plugin's functionality may be limited if certain dependencies, like the SelectSatManager, are not properly initialized or available.
+</Aside>
+
+## Development Considerations
+
+When extending or modifying the Satellite Info Box Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers multiple event handlers for various user interactions and data updates
+- The UI is dynamically generated and updated based on the selected object type
+- Performance optimizations are in place for handling large datasets and frequent updates
+
+<Aside>
+  When adding new features or data fields to the Satellite Info Box, ensure that the information is relevant and valuable to users. Too much information can be overwhelming and may impact the user experience.
+</Aside>
+
+## Troubleshooting
+
+- If the info box doesn't appear, ensure that a space object is properly selected
+- Check the browser console for any error messages related to data retrieval or updates
+- Verify that all required KeepTrack components and dependencies are correctly initialized
+- For performance issues with large datasets, consider implementing additional caching or lazy loading techniques
+
+By leveraging the Satellite Info Box Plugin, KeepTrack users can gain valuable insights into the characteristics and behavior of various space objects, enhancing their overall experience with the application.

@@ -1,0 +1,59 @@
+## 1. Short and Direct Two-Paragraph Pitch
+
+KeepTrack offers free, comprehensive training in the concepts needed to understand how we find, track, and analyze satellites and debris in space. Our open-source platform, used by millions including major organizations and militaries worldwide, empowers users to engage with critical space awareness concepts. Developed by a former Air Force Space Operations Officer with extensive teaching experience, and refined by a diverse advisory team, KeepTrack is designed to be accessible to all, regardless of technical background.
+
+Validate your expertise with our certification program. For a modest fee, tackle real-world space challenges and prove your skills in just 10 hours for Level 1 or 32 hours for Level 2. As a certified member, your feature requests for KeepTrack will be prioritized, allowing you to shape the evolution of this widely-used, free software. Your contribution supports ongoing development, including bringing in specialized expertise. Whether you're aiming for a career in space, looking to enhance your current role, or simply fascinated by space, KeepTrack certification offers tangible proof of your space knowledge, backed by a money-back guarantee.
+
+## 2. Pitch for 19-year-old College Student (Non-Engineer)
+
+Hey there, future space pro! Want to launch your space career without an engineering degree? KeepTrack is your mission control! Our free, open-source platform lets you dive into the fascinating world of tracking satellites and space debris – the same concepts used by millions, including major space agencies and companies.
+
+Here's why KeepTrack is your ticket to the stars:
+1. Free Level 1 certification for students! Just 10 hours of your time to gain skills that'll make your resume stand out.
+2. Work on real-world projects like modeling SpaceX Starlink launches. Imagine showing that off in your next internship interview!
+3. Learn from a former Air Force Space Ops Officer and a diverse team of experts, making sure the content is engaging and inclusive for everyone.
+4. Influence the future of space software. Your certified status means your ideas for improving KeepTrack get priority.
+5. Join a global community on GitHub, connecting with space enthusiasts and professionals.
+
+No risk with our money-back guarantee! Whether you're aiming for NASA or NewSpace startups, KeepTrack certification gives you the confidence to talk space with the pros. Ready to make your mark in the cosmos?
+
+## 3. Pitch for 28-year-old in Unrelated Industry
+
+Dreaming of stars while stuck in spreadsheets? KeepTrack can launch your journey into the booming space industry – no career restart required! Our platform offers free, flexible training in finding, tracking, and analyzing satellites and space debris, used by millions including major players across government and private space sectors.
+
+Here's your launchpad to a space career:
+1. Learn at your own pace with a mix of docs, videos, and hands-on projects. Level 1 takes just 10 hours, Level 2 is 32 hours.
+2. Affordable certification that proves your space smarts. Less than a night out for skills that can open new career doors!
+3. Work on real-world challenges like modeling Starlink launches and creating pro-level presentations – skills you can use on day one of a new job.
+4. Developed by a space operations expert and refined by a diverse advisory team, ensuring content that's accessible and relevant.
+5. Your certification fee goes directly to improving the software, and your feature requests get priority. Shape the tools used by millions!
+
+KeepTrack won't make you an engineer overnight, but it will give you the edge in space-related roles, from marketing to project management. With a money-back guarantee, there's no risk in reaching for the stars. Ready to add some space to your skill set?
+
+## 4. Pitch for 33-year-old Woman
+
+Looking for a way to break into the exciting world of space technology? KeepTrack offers you the opportunity to master the concepts behind finding, tracking, and analyzing satellites and space debris – critical skills in today's expanding space economy. Our open-source platform, used by millions worldwide, provides free, flexible training that fits into your busy schedule.
+
+Why KeepTrack is your launchpad to space industry success:
+1. Designed for accessibility: Created by a space operations expert and refined by a diverse team including female professionals in law and engineering.
+2. Flexible learning: Complete Level 1 in just 10 hours, or dive deeper with Level 2 in 32 hours. Learn through a mix of documentation, videos, and real-world projects.
+3. Practical skills: Create professional presentations on space events, a valuable asset in many roles from project management to communications.
+4. Influence development: As a certified member, your feature requests get priority. Shape the future of space software used globally.
+5. Supportive community: Join our GitHub community to connect with developers and users worldwide.
+
+KeepTrack certification gives you tangible proof of your space knowledge, setting you apart in the tech landscape. It's not just for engineers – it's for anyone looking to add a unique, in-demand skill set. With a money-back guarantee, you've got nothing to lose and a universe to gain. Ready to reach for the stars?
+
+## 5. Pitch for Veteran (Former Space Operations)
+
+Your expertise in space operations is more valuable than ever. KeepTrack, an open-source platform used by millions including defense and government agencies worldwide, offers you a way to translate your military space experience into civilian sector success.
+
+Here's why KeepTrack certification is your next mission:
+1. Created by one of your own: Developed by a former Air Force Space Operations Officer with over 10 years of experience and multiple innovation awards.
+2. Stay cutting-edge: Our free training materials cover the latest in satellite and debris tracking, continuously updated for 8 years.
+3. Prove your skills: Certification involves real-world projects like modeling Starlink launches – familiar territory with a civilian twist.
+4. Shape the future: Your certified status means your feature requests get priority. Continue influencing space operations in the civilian world.
+5. Expand your toolkit: Master KeepTrack's extensive features, from orbit modeling to multi-site look angles.
+
+Level 1 takes just 10 hours, Level 2 is 32 hours – manageable even with your busy schedule. While you bring invaluable experience, KeepTrack certification shows you're up-to-date with civilian sector tools and practices. It's a powerful addition to your skillset, whether you're seeking new opportunities or staying engaged with the space field.
+
+With a money-back guarantee, there's no risk in expanding your space operations expertise. Ready to take your space career to new heights in the civilian sector?

@@ -1,0 +1,85 @@
+---
+title: Time Machine
+description: A KeepTrack plugin that simulates the historical growth of satellite populations over time, developed in collaboration with EPFL's Cosmos Archaeology exhibit.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The Time Machine Plugin is a component of the KeepTrack application that provides a visual representation of the growth of satellite populations over time. This plugin was created in collaboration with EPFL's [Cosmos Archaeology exhibit](https://epfl-pavilions.ch/en/archive/cosmos-archaeology-dark-cloud-of-debris), offering users a unique perspective on the evolution of Earth's orbital environment.
+
+## Features
+
+- Simulates the historical growth of satellite populations from 1957 to the present day
+- Visualizes satellites by year of launch
+- Customizable playback speed and delay settings
+- Option for looping playback
+- Integration with KeepTrack's color scheme and group management systems
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+1. A "Time Machine" icon in the bottom menu for quick access
+2. Visual feedback through color changes and orbit displays
+3. Toast notifications indicating the current year in the simulation (optional)
+
+<Aside>
+  The Time Machine plugin uses KeepTrack's toast notification system to display the current year. This can be disabled in the settings if desired.
+</Aside>
+
+## Usage
+
+1. Click the "Time Machine" icon in the bottom menu to start the simulation
+2. Watch as satellites are added to the visualization year by year
+3. The simulation will automatically stop at the present day
+4. Click the icon again to stop the simulation at any time
+
+<Aside type="tip">
+  You can customize the playback speed by adjusting the `timeMachineDelay` setting in the KeepTrack configuration.
+</Aside>
+
+## Integration with KeepTrack
+
+The Time Machine Plugin integrates with several KeepTrack components:
+
+- **GroupManager**: Creates and selects groups of satellites by launch year
+- **ColorSchemeManager**: Applies color schemes to highlight satellite groups
+- **OrbitManager**: Manages the display of satellite orbits
+- **UiManager**: Handles UI updates and toast notifications
+
+## Configuration Options
+
+The plugin supports the following configuration options:
+
+- `timeMachineDelay`: Controls the delay between each year in the simulation
+- `timeMachineDelayAtPresentDay`: Sets the pause duration when reaching the present day
+- `loopTimeMachine`: Enables continuous looping of the simulation
+- `isDisableTimeMachineToasts`: Disables year notifications during playback
+- `timeMachineLongToast`: Extends the duration of year notifications
+
+<Aside>
+  These configuration options can be adjusted in the KeepTrack settings to customize the Time Machine experience.
+</Aside>
+
+## Development Notes
+
+When extending or modifying the Time Machine Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It uses asynchronous timeouts to manage the year-by-year progression
+- The `historyOfSatellitesPlay` method initiates the simulation
+- Each year is processed in the `playNextSatellite` method
+
+<Aside type="caution">
+  Be mindful of performance when modifying the plugin, especially for long-running simulations or when dealing with large satellite populations.
+</Aside>
+
+## Troubleshooting
+
+- If the simulation doesn't start, check if the bottom icon is properly selected
+- Ensure that the required KeepTrack components (GroupManager, ColorSchemeManager, etc.) are properly initialized
+- For performance issues, consider adjusting the `timeMachineDelay` setting or limiting the number of displayed satellites
+
+<Aside>
+  The Time Machine plugin was developed in collaboration with EPFL's Cosmos Archaeology exhibit, showcasing the potential for educational and research applications of KeepTrack's visualization capabilities.
+</Aside>

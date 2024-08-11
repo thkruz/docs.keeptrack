@@ -1,0 +1,95 @@
+---
+title: Short Term Fences
+description: A KeepTrack plugin that provides functionality for visualizing sensor search boxes and managing short term fences.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Short Term Fences (STF) Plugin is a component of the KeepTrack application that allows users to create and manage short term fences, which are visual representations of sensor search boxes. This plugin is particularly useful for users who own or operate sensors with search box functionality.
+
+## Features
+
+- Create custom short term fences with user-defined parameters
+- Visualize sensor search capabilities
+- Remove individual or all short term fences
+- Integration with satellite information display
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Short Term Fence" icon in the bottom menu for quick access
+2. A side menu with a form for creating and managing short term fences
+3. A link in the satellite information box to create an STF based on the selected object
+</Steps>
+
+<Aside>
+  The side menu can be accessed by clicking the "Short Term Fence" icon in the bottom menu. It provides a form for inputting STF parameters and buttons for managing existing STFs.
+</Aside>
+
+## Short Term Fence Configuration
+
+Users can configure the following parameters for a short term fence:
+
+- Center Azimuth and Azimuth Extent
+- Center Elevation and Elevation Extent
+- Center Range and Range Extent
+
+<Aside type="tip">
+  The plugin automatically calculates and displays the Azimuth and Elevation extents in kilometers based on the input degrees and range.
+</Aside>
+
+## Usage
+
+### Creating a Short Term Fence
+<Steps>
+1. Click the "Short Term Fence" icon in the bottom menu
+2. Fill in the STF parameters in the side menu form
+3. Click "Create New STF" to generate the fence
+</Steps>
+
+### Creating an STF Based on a Selected Object
+<Steps>
+1. Select a satellite in the main view
+2. In the satellite information box, click "Build Short Term Fence on this object..."
+3. The STF form will open with pre-filled coordinates based on the selected satellite
+4. Adjust parameters if needed and submit the form
+</Steps>
+
+### Managing Short Term Fences
+- Use the "Remove Last" button to delete the most recently created STF
+- Use the "Clear All STFs" button to remove all existing short term fences
+
+## Integration with KeepTrack
+
+The Short Term Fences Plugin integrates with several KeepTrack components:
+
+- **SensorManager**: Handles the creation and removal of STFs
+- **SelectSatManager**: Provides information about the selected satellite for STF creation
+- **SatInfoBox**: Adds the STF creation link to the satellite information display
+
+<Aside>
+  The plugin checks if the created STF is within the view of the current sensor to ensure validity. If not, it will display a warning message.
+</Aside>
+
+## Development
+
+When extending or modifying the Short Term Fences Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for various KeepTrack events (e.g., selectSatData, uiManagerFinal)
+- STF creation involves complex calculations using the RAE (Range, Azimuth, Elevation) coordinate system
+
+<Aside type="caution">
+  When adding new features or modifying existing ones, ensure to update both the UI elements and the corresponding event handlers in the `addJs` method.
+</Aside>
+
+## Troubleshooting
+
+- If STFs are not displaying, ensure that a sensor is selected
+- Check the browser console for any error messages
+- Verify that the input parameters are within valid ranges (e.g., azimuth between 0 and 360 degrees)
+
+Remember that the Short Term Fences Plugin is designed for advanced users familiar with sensor operations and space situational awareness concepts. It provides a powerful tool for visualizing sensor capabilities and analyzing satellite visibility within specific search areas.

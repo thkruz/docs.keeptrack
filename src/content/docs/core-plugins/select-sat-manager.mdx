@@ -1,0 +1,90 @@
+---
+title: Select Sat Manager
+description: A KeepTrack plugin that manages the selection of space objects and provides functionality for interacting with selected objects.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Select Sat Manager plugin is a core component of the KeepTrack application that handles the selection and interaction with various space objects, including satellites, sensors, and other celestial bodies.
+
+## Features
+
+- Select and deselect space objects
+- Switch between primary and secondary selected objects
+- Update visualization based on selection (e.g., color, size)
+- Integrate with other KeepTrack components (e.g., camera, sound, UI)
+- Handle different types of space objects (satellites, sensors, missiles, etc.)
+- Keyboard shortcuts for object selection and switching
+
+## User Interface
+
+The plugin primarily works in the background, affecting the main visualization and other UI components. It doesn't add specific UI elements but influences:
+
+- Object highlighting in the main view
+- Camera behavior
+- Information display in other plugins (e.g., Sat Info Box)
+
+## Usage
+
+### Selecting an Object
+<Steps>
+1. Click on an object in the main visualization
+2. Use the search function to find and select an object
+3. The selected object will be highlighted and centered in the view
+</Steps>
+
+### Switching Between Primary and Secondary Objects
+<Steps>
+1. Select a primary object
+2. Select a secondary object
+3. Use the '[' or ']' keys to switch between primary and secondary selections
+</Steps>
+
+<Aside>
+  Switching between primary and secondary objects allows for quick comparison and analysis of two different space objects.
+</Aside>
+
+## Integration with KeepTrack
+
+The Select Sat Manager integrates with several KeepTrack components:
+
+- **CatalogManager**: Retrieves object data
+- **CameraManager**: Controls camera focus and behavior
+- **SoundManager**: Plays sounds on selection
+- **ColorSchemeManager**: Updates object colors based on selection
+- **OrbitManager**: Manages orbit visualization for selected objects
+- **UiManager**: Updates UI elements based on selection
+
+<Aside type="caution">
+  The integration with multiple KeepTrack components makes the Select Sat Manager a central part of the application's functionality.
+</Aside>
+
+## Development
+
+When extending or modifying the Select Sat Manager, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It handles different types of space objects (SpaceObjectType enum)
+- Selection logic is separated for different object types (e.g., satellites, sensors)
+- The plugin manages both primary and secondary object selections
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isDisableSelectSat`: Disables satellite selection functionality if set to true
+
+<Aside type="caution">
+  Be cautious when modifying the selection logic, as it affects many other parts of the application. Always test thoroughly after making changes.
+</Aside>
+
+## Troubleshooting
+
+- If object selection isn't working, check if `isDisableSelectSat` is set to true
+- Ensure that the required KeepTrack components (CatalogManager, CameraManager, etc.) are properly initialized
+- Check the browser console for any error messages related to object selection or data retrieval
+
+<Aside>
+  If you encounter issues with specific object types not being selectable, verify that the object's SpaceObjectType is correctly handled in the selectSat method.
+</Aside>

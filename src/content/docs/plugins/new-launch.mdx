@@ -1,0 +1,90 @@
+---
+title: New Launch
+description: A KeepTrack plugin that enables users to generate notional orbital launches by modifying existing satellites with similar parameters.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The New Launch Plugin is a component of the KeepTrack application that provides functionality for generating notional orbital launches by modifying existing satellites with similar parameters.
+
+## Features
+
+- Modify existing satellites to create new launch scenarios
+- Select launch locations from a predefined list
+- Choose launch direction (North or South)
+- Automatically align the selected satellite with the launch site
+- Reset simulation time to 00:00:00 to represent relative time after launch
+- Integration with other KeepTrack components like SoundManager and ColorSchemeManager
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+1. A "New Launch" icon in the bottom menu for quick access
+2. A side menu with detailed launch configuration options
+3. Input fields for satellite number and inclination
+4. Dropdown menus for launch direction and facility selection
+5. A submit button to create the launch nominal
+
+<Aside>
+The side menu can be dragged to reposition it on the screen for better visibility or access.
+</Aside>
+
+## Usage
+
+1. Select a satellite using the main KeepTrack interface
+2. Click the "New Launch" icon in the bottom menu
+3. The satellite's SCC number and inclination will be automatically filled
+4. Choose the launch direction (North or South)
+5. Select a launch facility from the dropdown menu
+6. Click "Create Launch Nominal" to generate the new launch scenario
+
+<Aside type="caution">
+The plugin will disable the submit button and display a warning if the selected satellite's inclination is lower than the launch site's latitude, as this would be an impossible launch scenario.
+</Aside>
+
+## Integration with KeepTrack
+
+The New Launch Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Retrieves the currently selected satellite
+- **CatalogManager**: Manages satellite data and launch site information
+- **TimeManager**: Handles time-related calculations and offsets
+- **ColorSchemeManager**: Updates the color scheme after launch creation
+- **SoundManager**: Plays a lift-off sound when a new launch is created
+- **OrbitManager**: Updates orbit buffer data for the new launch
+
+## Development
+
+When extending or modifying the New Launch Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It depends on the SelectSatManager plugin
+- Launch site data is stored in the `launchSites` object
+- The `OrbitFinder` class is used to calculate the new orbit parameters
+
+<Aside type="tip">
+When adding new launch sites, make sure to update both the `launchSites` object and the HTML dropdown menu in the `sideMenuElementHtml` property.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `bottomIconImg`: Image for the bottom menu icon (default: rocket.png)
+- `isRequireSatelliteSelected`: Set to `true`, requires a satellite to be selected for the plugin to function
+- `isIconDisabledOnLoad`: Set to `true`, the bottom icon is initially disabled
+- `dragOptions`: Configures the draggability of the side menu
+
+## Troubleshooting
+
+- If the launch creation fails, check the browser console for error messages
+- Ensure that the required dependencies (SelectSatManager, CatalogManager, etc.) are properly initialized
+- Verify that the selected satellite's inclination is appropriate for the chosen launch site
+- If the cruncher fails to meet requirements, try selecting a different satellite or launch site
+
+<Aside>
+Remember that the created launch nominal is a simulation and may not perfectly represent real-world launch conditions. It's primarily useful for relative time calculations and sensor coverage analysis.
+</Aside>

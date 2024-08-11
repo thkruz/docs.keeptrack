@@ -1,0 +1,96 @@
+---
+title: Analysis Menu
+description: A reference page in my new Starlight docs site.
+---
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Analysis Menu Plugin is a component of the KeepTrack application that provides various analysis and export functions for satellite data.
+
+## Features
+- Export catalog data in various formats (TLE, 3LE, CSV)
+- Find close objects and potential reentries
+- Calculate and export best pass times for satellites
+- Analyze orbital trends (currently commented out)
+
+<Aside>
+  3LE stands for "Three Line Element Set," a format used to describe the orbits of satellites and space objects. It is just a TLE with the name of the satellite on the first line.
+</Aside>
+
+## User Interface
+<Steps>
+1. Bottom menu icon labeled "Analysis Menu"
+2. Side menu with various export and analysis options
+3. Forms for inputting satellite numbers for best pass time calculations
+4. Buttons for initiating different analysis and export functions
+</Steps>
+
+## Analysis Information Displayed
+- Catalog data in various formats (TLE, 3LE, CSV)
+- List of close objects or potential reentries
+- Best pass times for selected satellites, including:
+  - Start and stop times
+  - Azimuth, elevation, and range
+  - Pass score
+  - Time in coverage
+  - Minimum range and maximum elevation
+
+## Usage
+
+### Exporting Catalog Data
+<Steps>
+1. Click the "Analysis Menu" icon in the bottom menu
+2. Choose the desired export format (e.g., "Export Official TLEs", "Export Catalog CSV")
+3. The data will be saved in the selected format
+</Steps>
+
+### Finding Close Objects or Reentries
+<Steps>
+1. Click the "Analysis Menu" icon
+2. Select "Find Close Objects" or "Find Reentries"
+3. The application will search for and display the results
+</Steps>
+
+### Calculating Best Pass Times
+<Steps>
+1. Click the "Analysis Menu" icon
+2. Enter satellite numbers in the "Satellite Numbers" field
+3. Click "Generate Best Pass Times"
+4. The results will be exported as a CSV file
+</Steps>
+
+<Aside type="tip">
+  This menu is often used to quickly add export features to KeepTrack. Many then grow to become their own plugins later with more settings and features.
+  If you are try to get information of KeepTrack that isn't offered in another plugin, request it on the [Github page](https://github.com/thkruz/keeptrack.space/) and it is usually easy to add it here.
+</Aside>
+
+## Integration with KeepTrack
+
+The Analysis Menu plugin integrates with several KeepTrack components:
+- **CatalogManager**: Accesses satellite and object data
+- **TimeManager**: Handles time-related calculations
+- **SensorManager**: Retrieves sensor information
+- **UiManager**: Manages user interface interactions and notifications
+- **SatMath**: Performs satellite position and look angle calculations
+- **Scene**: Retrieves sun position data
+
+## Development
+
+When extending or modifying the Analysis Menu Plugin, consider the following:
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions and sensor selection
+- The findCloseObjects and findBestPass methods contain the core analysis logic
+- Export functionality is handled by the CatalogExporter class
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+- `bottomIconElementName`: Sets the ID for the bottom menu icon
+- `bottomIconImg`: Specifies the icon image for the bottom menu
+- `sideMenuElementName`: Sets the ID for the side menu container
+- `helpTitle` and `helpBody`: Configures the help text for the plugin
+
+## Troubleshooting
+- If exports are not working, check browser console for error messages
+- Ensure a sensor is selected before attempting to calculate best pass times
+- Verify that the required KeepTrack components (CatalogManager, SensorManager, etc.) are properly initialized

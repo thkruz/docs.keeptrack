@@ -1,0 +1,96 @@
+---
+title: Screenshot
+description: A KeepTrack plugin that allows users to capture high-resolution screenshots of the application's view.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Screenshot Plugin is a component of the KeepTrack application that provides functionality for capturing high-resolution screenshots of the current view. It enhances the user experience by allowing easy sharing and documentation of specific space visualization scenarios.
+
+## Features
+
+- Capture screenshots in multiple resolutions (HD, 4K, 8K)
+- Add customizable watermarks and copyright information
+- Include classification information when applicable
+- Accessible via bottom menu icon and right-click context menu
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Take Photo" icon in the bottom menu for quick access
+2. A "Save Image" option in the right-click context menu
+3. A submenu in the right-click context menu with resolution options (HD, 4K, 8K)
+</Steps>
+
+<Aside>
+  The bottom menu icon captures a 4K resolution screenshot by default.
+</Aside>
+
+## Screenshot Information
+
+Screenshots include:
+- The current view of the KeepTrack application
+- A watermark with copyright information (if enabled)
+- Classification text (if applicable)
+
+## Usage
+
+### Capturing a Screenshot via Bottom Menu
+<Steps>
+1. Click the "Take Photo" icon in the bottom menu
+2. The screenshot will be automatically saved in 4K resolution
+</Steps>
+
+### Capturing a Screenshot via Right-Click Menu
+<Steps>
+1. Right-click anywhere on the visualization
+2. Hover over "Save Image" in the context menu
+3. Select the desired resolution (HD, 4K, or 8K)
+4. The screenshot will be saved in the selected resolution
+</Steps>
+
+<Aside type="tip">
+  Use the right-click menu to choose different resolutions based on your needs. Higher resolutions provide more detail but result in larger file sizes.
+</Aside>
+
+## Integration with KeepTrack
+
+The Screenshot Plugin integrates with several KeepTrack components:
+
+- **SettingsManager**: Configures resolution and copyright settings
+- **Renderer**: Accesses the canvas for capturing the current view
+- **ClassificationManager**: Retrieves classification information if applicable
+
+## Development
+
+When extending or modifying the Screenshot Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- Screenshot capture is queued and executed at the end of the draw loop for optimal timing
+- Watermark and classification text are added using a temporary canvas
+
+<Aside type="caution">
+  Be mindful of performance implications when capturing very high-resolution screenshots, especially on less powerful devices.
+</Aside>
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `copyrightOveride`: Allows customization of the copyright text
+- `classificationStr`: Sets the classification text to be displayed on the screenshot
+
+## Troubleshooting
+
+- If screenshots are not saving, check browser permissions for file downloads
+- Ensure that the application has finished loading before attempting to take a screenshot
+- For classification text issues, verify that the `classificationStr` setting is correctly configured
+
+<Aside>
+  The plugin uses the HTML5 Canvas API to generate screenshots. Ensure that the user's browser supports this feature for proper functionality.
+</Aside>
+
+Remember to respect copyright and classification guidelines when sharing screenshots captured with this plugin.

@@ -1,0 +1,85 @@
+---
+title: Sensor Info Plugin
+description: A KeepTrack plugin that provides detailed information about the selected sensor.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Badge } from '@astrojs/starlight/components';
+
+The SensorInfoPlugin is a component of the KeepTrack application that provides detailed information about selected sensors used in space surveillance and tracking.
+
+## Features
+
+- Displays detailed information about the selected sensor
+- Allows drawing lines from the sensor to the Sun or Moon
+- Integrates with other KeepTrack components like SoundManager and LineManager
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. A "Sensor Info" icon in the bottom menu for quick access
+2. A side menu with detailed sensor information
+3. Buttons to draw or remove lines to the Sun and Moon
+</Steps>
+
+## Sensor Information Displayed
+
+- Sensor Name
+- Country
+- Sensor Type
+- Latitude and Longitude
+- Azimuth range (minimum and maximum)
+- Elevation range (minimum and maximum)
+- Range (minimum and maximum)
+- Frequency Band (for RF sensors)
+- Beam Width (for RF sensors)
+
+## Usage
+
+  ### Viewing Sensor Info
+    <Steps>
+    1. Select a sensor using the Sensor List Plugin
+    2. Click the "Sensor Info" icon in the bottom menu
+    3. View the detailed sensor information in the side menu
+    </Steps>
+  ### Drawing Lines
+    <Steps>
+    1. Open the Sensor Info side menu
+    2. Click "Draw Line to Sun" or "Draw Line to Moon"
+    3. To remove the line, click the button again
+    </Steps>
+
+## Integration with KeepTrack
+
+The SensorInfoPlugin integrates with several KeepTrack components:
+
+- **SoundManager**: Plays sound effects for user interactions
+- **LineManager**: Manages the lines drawn to the Sun and Moon
+- **SensorManager**: Retrieves information about the current sensor
+- **UiManager**: Displays toast notifications
+- **TimeManager**: Gets the current simulation time
+- **Scene**: Retrieves positions of the Sun and Moon
+
+## Development
+
+When extending or modifying the SensorInfoPlugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions and line additions
+- Sensor data is retrieved from the SensorManager
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRequireSensorSelected`: Set to `true` by default, requires a sensor to be selected for the plugin to function
+- `isIconDisabledOnLoad`: Set to `true` by default, the bottom icon is initially disabled
+- `dragOptions`: Configures the draggability of the side menu
+
+## Troubleshooting
+
+- If the sensor information doesn't update, ensure that a sensor is selected using the Sensor List Plugin
+- Check the browser console for any error messages
+- Verify that the required KeepTrack components (SensorManager, LineManager, etc.) are properly initialized

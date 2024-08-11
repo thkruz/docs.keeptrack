@@ -1,0 +1,112 @@
+---
+title: Edit Sat
+description: A KeepTrack plugin that allows users to edit satellite data and Two-Line Element sets (TLEs).
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+The Edit Sat Plugin is a component of the KeepTrack application that provides functionality for editing satellite data, including Two-Line Element sets (TLEs).
+
+## Features
+
+- Edit satellite orbital parameters
+- Update satellite epoch to current time
+- Save and load TLE data
+- Visualize changes in satellite orbit
+- Integration with other KeepTrack components like SelectSatManager and OrbitManager
+
+## User Interface
+
+The plugin adds the following UI elements:
+
+<Steps>
+1. An "Edit Satellite" icon in the bottom menu for quick access
+2. A side menu with input fields for editing satellite parameters
+3. Buttons for updating, saving, and loading TLE data
+4. A right-click context menu option for editing satellites
+</Steps>
+
+<Aside type="tip">
+  The side menu can be dragged to reposition it on the screen, making it easier to view and edit satellite data while observing the visualization.
+</Aside>
+
+## Editable Satellite Information
+
+- Satellite Number (SCC#)
+- Epoch Year and Day
+- Inclination
+- Right Ascension of Ascending Node
+- Eccentricity
+- Argument of Perigee
+- Mean Anomaly
+- Mean Motion
+- Period
+
+<Aside>
+  When editing the Mean Motion, the Period is automatically calculated and vice versa, helping users understand the relationship between these parameters.
+</Aside>
+
+## Usage
+
+### Editing Satellite Data
+<Steps>
+1. Select a satellite in the main view
+2. Click the "Edit Satellite" icon in the bottom menu
+3. Modify the desired parameters in the side menu
+4. Click "Update Satellite" to apply the changes
+</Steps>
+
+### Updating Satellite Epoch
+<Steps>
+1. Open the Edit Satellite menu
+2. Click "Update Epoch to Now"
+3. The satellite's TLE will be updated with the current time while maintaining its position
+</Steps>
+
+### Saving and Loading TLEs
+<Steps>
+1. After editing a satellite, click "Save TLE" to download the TLE data
+2. To load a saved TLE, click "Load TLE" and select the file
+</Steps>
+
+## Integration with KeepTrack
+
+The Edit Sat Plugin integrates with several KeepTrack components:
+
+- **SelectSatManager**: Manages the currently selected satellite
+- **OrbitManager**: Updates orbit buffer data when changes are made
+- **CatalogManager**: Handles satellite data and cruncher messages
+- **TimeManager**: Provides current simulation time for epoch updates
+- **UiManager**: Displays notifications and manages UI interactions
+
+<Aside type="caution">
+  Editing satellite parameters can significantly change its orbit. Always verify the changes in the visualization to ensure the edited orbit is as intended.
+</Aside>
+
+## Development
+
+When extending or modifying the Edit Sat Plugin, consider the following:
+
+- The plugin follows the KeepTrackPlugin architecture
+- It registers event handlers for UI interactions and satellite selection
+- TLE generation and validation are handled by the FormatTle and Sgp4 classes
+- The plugin uses the OrbitFinder class for updating satellite epochs
+
+## Code Configuration
+
+The plugin supports the following configuration options:
+
+- `isRequireSatelliteSelected`: Determines if a satellite must be selected for the plugin to function
+- `isIconDisabled`: Controls whether the bottom icon is initially disabled
+- `dragOptions`: Configuration for making the side menu draggable
+
+## Troubleshooting
+
+- If satellite updates fail, check the browser console for error messages
+- Ensure that the entered parameters are within valid ranges for TLEs
+- For epoch update issues, verify that the current time in the simulation is set correctly
+
+<Aside type="note">
+  The Edit Sat Plugin is a powerful tool for manipulating satellite data. Users should have a good understanding of orbital mechanics and TLE formats to use it effectively.
+</Aside>
