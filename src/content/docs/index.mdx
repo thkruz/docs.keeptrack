@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: Learn out how to find and track satellites today
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/keeptrack-2024-2-front.png
   actions:
     - text: Read the Overview
       link: /intro/overview/
@@ -14,23 +14,35 @@ hero:
     - text: Main Website
       link: https://keeptrack.space/
       icon: external
+	banner:
+  content: |
+    Version 10.0.0 is live now! 🎉
+    <a href="https://keeptrack.space/app/">Check it out</a>
+	lastUpdated: 2024-08-11
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import Mailer from '../../assets/mailer.astro';
+
 
 ## Next steps
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+<CardGrid>
+	<Card title="Try KeepTrack now!" icon="rocket">
+		You can run the 3D application at [`https://keeptrack.space/`](https://keeptrack.space/). Documentation is great, but the best way to learn is by doing.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Do you have questions?" icon="comment">
+		Give your feedback and [have your voice heard](https://github.com/thkruz/keeptrack.space/discussions). Most of the features and improvements are driven by user feedback.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+</CardGrid>
+<Card title="Documentation" icon="document">
+	The documentation is currently a work-in-progress. If you have any questions or suggestions, please [open an issue](https://github.com/thkruz/keeptrack.space/issues) on the GitHub repository.
+</Card>
+<CardGrid>
+	<Card title="Get Notified of Major Updates" icon="email">
+		<Mailer />
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Like using KeepTrack?" icon="star">
+		[Like us on Github!](https://github.com/thkruz/keeptrack.space) It really helps raise awareness of the project and costs you nothing.
 	</Card>
 </CardGrid>
