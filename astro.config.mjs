@@ -5,8 +5,11 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://docs.keeptrack.space',
   integrations: [starlight({
-    title: '',
+    title: 'Official Documentation',
+    description: 'Learn how to start tracking satellites with KeepTrack',
+    favicon: './favicon.ico',
     logo: {
       src: './src/assets/textLogoSm.png'
     },
@@ -67,16 +70,19 @@ export default defineConfig({
       // }
       ]
     },
+    {
+      label: 'Level 2 - Advanced Tutorials',
+      items: [
+        {
+          label: 'External Data Sources',
+          slug: 'advanced-tut/external-catalog'
+        // }, {
+        //   label: 'Using KeepTrack Offline',
+        //   slug: 'advanced-tut/using-keeptrack-offline'
+        }
+      ]
+    },
     // {
-    //   label: 'Level 2 - Advanced Tutorials',
-    //   items: [{
-    //     label: 'Customizing KeepTrack',
-    //     slug: 'advanced-tut/customizing-keeptrack'
-    //   }, {
-    //     label: 'Using KeepTrack Offline',
-    //     slug: 'advanced-tut/using-keeptrack-offline'
-    //   }]
-    // }, {
     //   label: 'Level 3 - Case Studies',
     //   items: [{
     //     label: 'Customizing KeepTrack',
@@ -112,19 +118,21 @@ export default defineConfig({
       }, {
         label: 'License',
         slug: 'contributing/license'
-      },{
-        label: 'Developing Plugins',
-        slug: 'dev/dev-plugins'
-      }, {
-        label: 'Developing Sensors',
-        slug: 'dev/dev-sensors'
-      }, {
-        label: 'Developing Filters',
-        slug: 'dev/dev-filters'
-      }, {
-        label: 'Developing Data Sources',
-        slug: 'dev/dev-data-sources'
-      }]
+      },
+      // {
+      //   label: 'Developing Plugins',
+      //   slug: 'dev/dev-plugins'
+      // }, {
+      //   label: 'Developing Sensors',
+      //   slug: 'dev/dev-sensors'
+      // }, {
+      //   label: 'Developing Filters',
+      //   slug: 'dev/dev-filters'
+      // }, {
+      //   label: 'Developing Data Sources',
+      //   slug: 'dev/dev-data-sources'
+      // }
+      ]
     }]
   }), mdx()]
 });

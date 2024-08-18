@@ -37,18 +37,22 @@ Radar systems are the workhorses of space tracking, especially for objects in Lo
 2. **Mechanical Radars**: These traditional systems use physically moving antennas to scan the sky. While generally less flexible than phased array systems, they can still provide valuable tracking data.
 </Steps>
 
+![Ground Based Radar](../../../assets/sensors/gbr.png)
+
 <Aside title="Technical Note">
 Radar systems are particularly effective for tracking objects in lower orbits due to the inverse square law - the strength of the radar return decreases with the square of the distance to the object.
 </Aside>
 
 ### Optical Telescopes
 
-Optical telescopes play a crucial role in tracking objects in higher orbits, including those in Geosynchronous Earth Orbit (GEO). They work by detecting reflected sunlight from objects in space.
+Optical telescopes play a crucial role in tracking objects in higher orbits, including those in Geosynchronous Earth Orbit (GEO). They work by detecting reflected sunlight from objects in space. They are able to view things at substantially greater distances than radar systems, but are only able to record the angular information (no range).
 
 <Steps>
 1. **Ground-Based Electro-Optical Deep Space Surveillance (GEODSS)**: These systems use large telescopes and sensitive cameras to detect faint objects at great distances.
 2. **Passive Optical Systems**: These range from large observatory telescopes to smaller, more numerous systems that can provide wide coverage.
 </Steps>
+
+![Optical Telescopes](../../../assets/sensors/telescope.png)
 
 <Aside type="tip">
 Optical systems are generally limited to nighttime observations when the sky is dark but the objects are illuminated by the sun. This creates predictable windows for observation. There is a special color scheme called `Sunlight` in KeepTrack that highlights objects visible in sunlight.
@@ -82,9 +86,15 @@ Space tracking often relies on networks of sensors to provide comprehensive cove
 
 <Steps>
 1. **Space Surveillance Network (SSN)**: Operated by the US military, this network includes both radar and optical sensors distributed globally.
-2. **International Scientific Optical Network (ISON)**: A civilian network of optical telescopes used for scientific observation and space tracking.
-3. **European Space Surveillance and Tracking (EU SST)**: A European initiative combining data from various sensor types across multiple countries.
+2. **Missile Warning Network**: A subset of the SSN focused on detecting missile launches and tracking ballistic missiles.
+3. **European Space Operations Centre (ESOC)**: The European Space Agency's network of sensors for tracking satellites and debris.
+4. **LeoLabs**: A private company specializing in tracking objects in Low Earth Orbit using phased array radars.
+5. **MDA Sensors**: A network of sensors operated by the Missile Defense Agency for tracking objects in space.
+6. **Russian Sensors**: Russia operates a variety of radar and optical sensors for space tracking.
+
 </Steps>
+
+![Missile Warning Network](../../../assets/sensors/mw-network.png)
 
 <Aside type="tip">
 You can select an entire sensor network in the Sensor List to see the combined coverage of all sensors in that network.
