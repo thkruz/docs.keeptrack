@@ -49,7 +49,7 @@ export default defineConfig({
         label: 'Intro to Orbital Mechanics',
         slug: 'basic-tut/orbital-mechanics'
       }, {
-        label: 'Select a Satellite',
+        label: 'Find a Satellite',
         slug: 'basic-tut/find-a-satellite'
       }, {
         label: 'Types of Sensors',

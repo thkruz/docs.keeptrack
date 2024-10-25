@@ -1,11 +1,69 @@
 ---
 title: Find a Satellite
 description: A beginner's guide to locating satellites in KeepTrack.Space
-lastUpdated: 2024-08-11
+lastUpdated: 2024-10-25
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
+
+KeepTrack.Space offers multiple ways to find satellites quickly and accurately. Here's how you can search for a specific satellite:
+
+## Basic Search
+- Enter satellite name (e.g., "ISS", "Hubble")
+- Enter NORAD ID (e.g., "25544")
+- Enter International Designator (e.g., "1998-067A")
+
+## Advanced Search Syntax
+- Use commas for multiple NORAD IDs: "25544,37820"
+- Filter by launch year: "2023-" finds satellites launched in 2023
+
+<Aside type="caution">
+  Do not include spaces in search terms (e.g., "25544,37820" not "25544, 37820")
+</Aside>
+
+## Search Results
+- Results appear as you type (minimum 3 characters)
+- Limited to 350 results by default (configurable in settings)
+- Results show:
+  - Satellite name
+  - NORAD ID
+  - Launch date
+  - Current status
+
+## Selecting Satellites
+1. Click on a result to select the satellite
+2. The view will automatically center on the selected satellite
+3. The Satellite Info Box will display detailed information
+4. The satellite's orbit will be highlighted
+
+## Tips for Effective Searching
+- Start with broader terms and narrow down results
+- Use NORAD IDs for precise selection
+- Check launch date to distinguish between similar satellites
+- Use the satellite type filter to narrow results
+
+## Common Issues and Solutions
+
+### No Results Found
+- Check spelling
+- Try alternative names
+- Verify NORAD ID
+- Ensure search term is at least 3 characters
+
+### Too Many Results
+- Add more specific terms
+- Use exact NORAD ID
+
+## Keyboard Shortcuts
+- `Shift + F`: Open search bar
+- `Esc`: Clear search/Close search bar
+
+## Examples
+
+Let's practice finding satellites using the search feature in KeepTrack.Space.
+
+### International Space Station (ISS)
 
 Now that you're familiar with the basics of KeepTrack.Space, let's learn how to find a specific satellite. We'll use the International Space Station (ISS) as an example.
 
@@ -49,7 +107,7 @@ Now that you're familiar with the basics of KeepTrack.Space, let's learn how to 
   When the ISS is selected you can actually hear audio from the astronauts on board. Keep your volume up!
 </Aside>
 
-## Example: Finding a Specific Satellite
+### Hubble Space Telescope
 
 Let's try finding another satellite, like the Hubble Space Telescope:
 

@@ -1,7 +1,7 @@
 ---
 title: Basic Orbital Mechanics Concepts
 description: A comprehensive guide to the fundamental concepts of orbital mechanics for users of astrodynamics tools, with a focus on concepts relevant to KeepTrack.
-lastUpdated: 2024-08-11
+lastUpdated: 2024-10-25
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -11,14 +11,41 @@ This guide covers the essential concepts of orbital mechanics that you'll need t
 
 ## Orbital Elements
 
-To describe an orbit fully, we only need six orbital elements:
+Each orbit is defined by six key elements:
 
-1. **Semi-major axis (a)**: Half the longest diameter of the elliptical orbit.
-2. **Eccentricity (e)**: Measures how much the orbit deviates from a perfect circle.
-3. **Inclination (i)**: The angle between the orbital plane and the reference plane.
-4. **Right Ascension of the Ascending Node (Ω)**: The angle from the reference direction to the ascending node.
-5. **Argument of Periapsis (ω)**: The angle from the ascending node to the periapsis.
-6. **True Anomaly (ν)**: The angle from the periapsis to the object's current position.
+1. **Semi-major axis (a)**
+   - Defines the size of the orbit
+   - Measured in kilometers
+   - Directly related to orbital period
+
+2. **Eccentricity (e)**
+   - Defines the shape of the orbit
+   - 0 = perfect circle
+   - 1 = escape trajectory
+   - Common values: 0.0001 - 0.01 (LEO), 0.0 (GEO)
+
+3. **Inclination (i)**
+   - Angle between orbital plane and equator
+   - Measured in degrees
+   - Common values:
+     - 0° = equatorial orbit
+     - 51.6° = ISS orbit
+     - 98° = sun-synchronous orbit
+
+4. **Right Ascension of Ascending Node (Ω)**
+   - Defines where orbit crosses equator going north
+   - Measured in degrees
+   - Changes due to Earth's oblateness
+
+5. **Argument of Perigee (ω)**
+   - Defines orientation of orbit in orbital plane
+   - Measured in degrees
+   - Important for elliptical orbits
+
+6. **True Anomaly (ν)**
+   - Defines satellite's position in orbit
+   - Measured in degrees
+   - Changes constantly as satellite moves
 
 These elements define the size, shape, and orientation of an orbit in space at a given time. With that knowledge we can then predict the future positions of objects in orbit using [propagation methods](#propagation-methods).
 
@@ -26,15 +53,72 @@ These elements define the size, shape, and orientation of an orbit in space at a
   These elements are often referred to as Keplerian elements, named after Johannes Kepler, who first described the laws of planetary motion.
 </Aside>
 
-## Types of Orbits
+## Practical Examples
 
-Different orbits serve various purposes in space missions:
+### Example 1: International Space Station
+```
+Semi-major axis: 6,785 km
+Eccentricity: 0.0001
+Inclination: 51.6°
+RAAN: Changes daily
+Argument of Perigee: Not significant (near circular)
+Period: ~92 minutes
+```
 
-- **Low Earth Orbit (LEO)**: Altitude of 160-2000 km, used for Earth observation and many communication satellites.
-- **Medium Earth Orbit (MEO)**: Altitude of 2000-35,786 km, used for navigation satellites like GPS.
-- **Geosynchronous Orbit (GEO)**: Altitude of 35,786 km, where satellites have an orbital period equal to Earth's rotational period.
-- **Highly Elliptical Orbit (HEO)**: Elliptical orbits with high eccentricity, useful for communications in high latitudes.
-- **Sun-Synchronous Orbit (SSO)**: A nearly polar orbit that passes over any given point of the Earth's surface at the same local solar time.
+### Example 2: GPS Satellite
+```
+Semi-major axis: 26,559 km
+Eccentricity: 0.01
+Inclination: 55°
+RAAN: Varies by plane
+Period: 12 hours
+```
+
+## Common Orbits and Their Uses
+
+### Low Earth Orbit (LEO)
+- Description: Closest to Earth, typically circular or elliptical.
+- Altitude: 160-2000 km
+- Period: ~90 minutes
+- Uses: Earth observation, communications, human spaceflight
+- Examples: ISS, Starlink, Earth observation satellites
+
+### Medium Earth Orbit (MEO)
+- Description: Circular orbit between LEO and GEO.
+- Altitude: 2000-35,786 km
+- Period: 2-24 hours
+- Uses: Navigation, communication
+- Examples: GPS, Galileo, GLONASS
+
+### Geostationary Orbit (GEO)
+- Description: Circular orbit above the equator with a period of 24 hours.
+- Altitude: 35,786 km
+- Period: 24 hours
+- Uses: Communications, weather monitoring
+- Examples: GOES satellites, TV broadcast satellites
+
+### Highly Elliptical Orbit (HEO)
+- Description: Highly elliptical orbit with a high apogee and low perigee.
+- Altitude: Varies
+- Period: Varies
+- Uses: High-latitude communications
+- Examples: Molniya orbits
+
+### Sun-Synchronous Orbit (SSO)
+- Description: Nearly polar orbit that passes over any given point of the Earth's surface at the same local solar time.
+- Altitude: Varies
+- Period: Varies
+- Uses: Earth observation, climate monitoring
+- Examples: Landsat, Sentinel satellites
+
+## Perturbations
+
+Common forces that affect orbits:
+1. Earth's oblateness (J2)
+2. Atmospheric drag
+3. Solar radiation pressure
+4. Third-body effects (Moon, Sun)
+5. Solar wind
 
 ## Two-Line Element Sets (TLEs)
 
@@ -146,3 +230,20 @@ KeepTrack uses the Simplified General Perturbations 4 (SGP4) model for orbit pro
 <Aside type="danger">
   SGP4-XP is an extended version of SGP4 that includes additional perturbation effects for higher accuracy. Currently it is only available in binary format and can't be used in TypeScript or JavaScript environments. These TLEs are very different and using them will result in error messages!
 </Aside>
+
+## Practical Tips for KeepTrack Users
+
+1. **Understanding Search Results**
+   - Higher altitudes = slower apparent motion
+   - Similar inclinations often indicate related missions
+   - Similar RAAN values indicate same orbital plane
+
+2. **Predicting Satellite Behavior**
+   - LEO satellites complete many passes per day
+   - GEO satellites appear stationary
+   - Sun-synchronous satellites pass at same local time
+
+3. **Analysis Tips**
+   - Use orbital period to identify orbit type
+   - Check inclination for mission type hints
+   - Compare inclination, RAAN, and period to identify similar orbits
