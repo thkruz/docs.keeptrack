@@ -1,8 +1,8 @@
 /* Dark mode colors. */
 :root {
-	--sl-color-accent-low: #132635;
-	--sl-color-accent: #236fa6;
-	--sl-color-accent-high: #b5cce0;
+	--sl-color-accent-low: #860f08;
+	--sl-color-accent: #d61006;
+	--sl-color-accent-high: #e01a0e;
 	--sl-color-white: #ffffff;
 	--sl-color-gray-1: #eeeeee;
 	--sl-color-gray-2: #c2c2c2;
@@ -11,20 +11,31 @@
 	--sl-color-gray-5: #383838;
 	--sl-color-gray-6: #272727;
 	--sl-color-black: #181818;
+	--sl-color-banner-text: var(--sl-color-gray-1);
+	--sl-color-text-invert: var(--sl-color-gray-1);
 
-  /* Applies no matter what */
-  --sl-content-width: 55rem;
-  /* use modern windows font */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem;
+	.primary {
+		color: var(--sl-color-text-invert) !important;
+	}
+
+	/* Applies no matter what */
+	--sl-content-width: 55rem;
+	/* use modern windows font */
+	font-family: 'Segoe UI',
+	Tahoma,
+	Geneva,
+	Verdana,
+	sans-serif;
+	font-size: 1rem;
 
 	--sl-text-h3: 1.5rem;
 }
+
 /* Light mode colors. */
 :root[data-theme='light'] {
-	--sl-color-accent-low: #c8d9e9;
-	--sl-color-accent: #2571a8;
-	--sl-color-accent-high: #16354d;
+	--sl-color-accent-low: #e01a0e;
+	--sl-color-accent: #d61006;
+	--sl-color-accent-high: #860f08;
 	--sl-color-white: #181818;
 	--sl-color-gray-1: #272727;
 	--sl-color-gray-2: #383838;
@@ -34,24 +45,31 @@
 	--sl-color-gray-6: #eeeeee;
 	--sl-color-gray-7: #f6f6f6;
 	--sl-color-black: #ffffff;
+	--sl-color-banner-text: var(--sl-color-gray-7);
 }
+
 table {
 	width: 100%;
 	border-collapse: collapse;
+
 	thead {
 		display: table;
 		width: 100%;
 	}
+
 	tbody {
 		display: table;
 		width: 100%;
 	}
+
 	tr {
 		width: 100%;
+
 		td:first-of-type,
 		th:first-of-type {
 			width: 25%;
 		}
+
 		td:nth-of-type(2),
 		th:nth-of-type(2) {
 			width: 70%;
@@ -60,20 +78,23 @@ table {
 }
 
 .table {
-  border-radius: 10px;
-  tr {
-    td {
-      padding: 5px 15px !important;
-      vertical-align: middle !important;
-    }
-    td:first-of-type {
-      width: 25%;
-      background-color: var(--sl-color-accent);
-      color: white
-    }
-    td:nth-of-type(2) {
-      width: 70%;
-      background-color: var(--sl-color-accent-low);
-    }
-  }
+	border-radius: 10px;
+
+	tr {
+		td {
+			padding: 5px 15px !important;
+			vertical-align: middle !important;
+		}
+
+		td:first-of-type {
+			width: 25%;
+			background-color: var(--sl-color-accent);
+			color: white
+		}
+
+		td:nth-of-type(2) {
+			width: 70%;
+			background-color: var(--sl-color-accent-low);
+		}
+	}
 }
