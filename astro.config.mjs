@@ -11,7 +11,7 @@ export default defineConfig({
     description: 'Learn how to start tracking satellites with KeepTrack',
     favicon: './favicon.ico',
     logo: {
-      src: './src/assets/textLogoSm.png'
+      src: './src/assets/logo-red.png'
     },
     social: {
       github: 'https://github.com/thkruz/keeptrack-docs',
